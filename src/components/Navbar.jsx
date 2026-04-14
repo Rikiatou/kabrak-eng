@@ -1,14 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { useLang } from '../context/LangContext';
 
-const links = [
-  { to: '/', label: 'Accueil' },
-  { to: '/about', label: 'À Propos' },
-  { to: '/services', label: 'Services' },
-  { to: '/projects', label: 'Projets' },
-  { to: '/contact', label: 'Contact' },
-];
 
 function KabrakLogo({ className }) {
   return (
@@ -25,6 +19,14 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
+  const { lang, setLang, t } = useLang();
+  const links = [
+    { to: '/', label: t.nav.home },
+    { to: '/about', label: t.nav.about },
+    { to: '/services', label: t.nav.services },
+    { to: '/projects', label: t.nav.projects },
+    { to: '/contact', label: t.nav.contact },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -57,13 +59,19 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="hidden md:flex">
+        {/* Lang switcher + CTA */}
+        <div className="hidden md:flex items-center gap-3">
+          <button
+            onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
+            className="px-3 py-1.5 rounded-lg border border-slate-700 hover:border-blue-500 text-slate-400 hover:text-white text-xs font-bold transition-all"
+          >
+            {lang === 'fr' ? 'EN' : 'FR'}
+          </button>
           <Link
             to="/contact"
             className="px-4 py-2 text-sm font-semibold rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-all glow-btn"
           >
-            Nous contacter
+            {t.nav.cta}
           </Link>
         </div>
 
@@ -90,12 +98,20 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
-          <Link
-            to="/contact"
-            className="mt-4 block text-center py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all"
-          >
-            Nous contacter
-          </Link>
+          <div className="flex gap-3 mt-4">
+            <button
+              onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
+              className="flex-1 py-3 rounded-lg border border-slate-700 text-slate-300 text-sm font-bold"
+            >
+              {lang === 'fr' ? '🇬🇧 English' : '🇫🇷 Français'}
+            </button>
+            <Link
+              to="/contact"
+              className="flex-1 text-center py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all"
+            >
+              {t.nav.cta}
+            </Link>
+          </div>
         </div>
       )}
     </nav>

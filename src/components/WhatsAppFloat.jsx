@@ -1,6 +1,9 @@
+import { useLang } from '../context/LangContext';
+
 export default function WhatsAppFloat() {
-  const phone = '237600000000'; // Replace with real number
-  const message = encodeURIComponent("Bonjour KABRAK Eng, je souhaite discuter d'un projet.");
+  const { t } = useLang();
+  const phone = '237653561862';
+  const message = encodeURIComponent(t.whatsapp);
   const href = `https://wa.me/${phone}?text=${message}`;
 
   return (

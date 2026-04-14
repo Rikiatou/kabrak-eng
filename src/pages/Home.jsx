@@ -283,12 +283,12 @@ export default function Home() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="https://kabrakoptic.com"
+                  href="https://kabrakopticpro.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-white
                     bg-blue-600 hover:bg-blue-500 px-5 py-2.5 rounded-xl transition-all glow-btn group">
-                  Visiter kabrakoptic.com
+                  Visiter kabrakopticpro.com
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <Link to="/projects"
@@ -339,21 +339,21 @@ export default function Home() {
           <div className="grid gap-6 sm:grid-cols-3">
             {[
               {
-                name: 'Jean-Pierre M.',
-                role: 'Directeur, Cabinet Optique Yaoundé',
+                name: 'Nabil A.',
+                role: 'Gérant, Saoudia Optique — Douala',
                 quote: "KABRAK Eng a livré en 2 semaines ce que j'attendais depuis des mois. Interface claire, performance au top — exactement ce dont j'avais besoin.",
                 rating: 5,
               },
               {
-                name: 'Fatima N.',
-                role: 'Gérante, OptiVision Douala',
-                quote: 'Travail très professionnel et équipe réactive. La plateforme simplifie notre gestion quotidienne et nos clients sont impressionnés.',
+                name: 'Thierry Bogo',
+                role: 'Directeur, Bogo System — Bureau de change',
+                quote: 'Le logiciel de gestion qu\'ils ont développé pour notre bureau de change a transformé nos opérations. Rapide, fiable et parfaitement adapté à nos besoins.',
                 rating: 5,
               },
               {
-                name: 'Emmanuel K.',
-                role: 'Entrepreneur Tech, Abidjan',
-                quote: 'Des développeurs qui comprennent vraiment les réalités africaines. Innovation pertinente, code propre et livraison rapide. Je recommande.',
+                name: 'Aminatou K.',
+                role: 'Responsable, Cabinet Optique — Yaoundé',
+                quote: 'Équipe très professionnelle et réactive. La plateforme simplifie notre gestion quotidienne et nos clients sont impressionnés par la fluidité du service.',
                 rating: 5,
               },
             ].map(({ name, role, quote, rating }) => (

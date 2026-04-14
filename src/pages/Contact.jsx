@@ -30,6 +30,7 @@ export default function Contact() {
     setSent(true);
   };
 
+  const phone = '237653561862';
   const whatsappMsg = encodeURIComponent(
     `Bonjour KABRAK Eng!\n\nJe m'appelle ${form.name || '...'} et je souhaite discuter d'un projet.\n\n${form.message || ''}`
   );
@@ -71,7 +72,7 @@ export default function Contact() {
                 La façon la plus rapide pour nous joindre. Réponse en moins d'1h pendant les heures ouvrables.
               </p>
               <a
-                href={`https://wa.me/237600000000?text=${whatsappMsg}`}
+                href={`https://wa.me/${phone}?text=${whatsappMsg}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-semibold text-sm text-white transition-all w-full"
@@ -106,7 +107,7 @@ export default function Contact() {
                   icon: Clock,
                   color: '#06b6d4',
                   label: 'Disponibilité',
-                  value: 'Lun–Ven, 8h–18h WAT',
+                  value: 'Lun–Sam, 8h–18h WAT',
                   href: null,
                 },
               ].map(({ icon: Icon, color, label, value, href }) => (
@@ -186,7 +187,7 @@ export default function Contact() {
                         required
                         value={form.name}
                         onChange={handleChange}
-                        placeholder="Jean Dupont"
+                        placeholder="Moussa Njike"
                         className="w-full bg-[#050a14] border border-slate-700 focus:border-blue-500 rounded-xl
                           px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors"
                       />
@@ -259,7 +260,7 @@ export default function Contact() {
                       )}
                     </button>
                     <a
-                      href={`https://wa.me/237600000000?text=${whatsappMsg}`}
+                      href={`https://wa.me/${phone}?text=${whatsappMsg}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-white font-semibold text-sm transition-all"

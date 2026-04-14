@@ -59,7 +59,7 @@ export default function Projects() {
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium
                   bg-green-500/15 text-green-400 border border-green-500/30">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-400 pulse-dot" />
-                  En production · kabrakoptic.com
+                  En production · kabrakopticpro.com
                 </span>
               </div>
 
@@ -94,13 +94,13 @@ export default function Projects() {
 
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="https://kabrakoptic.com"
+                  href="https://kabrakopticpro.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500
                     text-white font-bold text-sm transition-all glow-btn group"
                 >
-                  Visiter kabrakoptic.com
+                  Visiter kabrakopticpro.com
                   <ExternalLink className="w-4 h-4" />
                 </a>
                 <Link
@@ -183,7 +183,7 @@ export default function Projects() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
-              href="https://kabrakoptic.com"
+              href="https://kabrakopticpro.com"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl border border-slate-700
