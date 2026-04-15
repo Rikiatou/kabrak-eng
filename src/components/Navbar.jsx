@@ -4,17 +4,6 @@ import { Menu, X } from 'lucide-react';
 import { useLang } from '../context/LangContext';
 
 
-function KabrakLogo({ className }) {
-  return (
-    <svg viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-      <rect width="32" height="32" rx="8" fill="#1d4ed8"/>
-      <polygon points="19,4 11,18 16,18 13,28 21,14 16,14" fill="white"/>
-      <text x="40" y="14" fontFamily="'Syne','Inter',sans-serif" fontWeight="800" fontSize="13" fill="white" letterSpacing="1">KABRAK</text>
-      <text x="40" y="29" fontFamily="'Inter',sans-serif" fontWeight="500" fontSize="11" fill="#60a5fa" letterSpacing="2">ENG</text>
-    </svg>
-  );
-}
-
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -42,7 +31,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-5 flex items-center justify-between h-16">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
-          <KabrakLogo className="h-9 w-auto group-hover:scale-105 transition-transform" />
+          <img src="/logo-kabrakeng.jpeg" alt="KABRAK Eng" className="h-9 w-auto group-hover:scale-105 transition-transform object-contain" />
         </Link>
 
         {/* Desktop links */}
