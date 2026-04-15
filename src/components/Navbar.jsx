@@ -28,10 +28,10 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 navbar-blur
       ${scrolled ? 'bg-[#050a14]/90 border-b border-blue-900/30 shadow-lg shadow-black/30' : 'bg-transparent'}`}>
-      <div className="max-w-6xl mx-auto px-5 flex items-center justify-between h-16">
+      <div className="max-w-6xl mx-auto px-5 flex items-center justify-between h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
-          <img src="/logo-kabrakeng.jpeg" alt="KABRAK Eng" className="h-12 w-auto group-hover:scale-105 transition-transform object-contain rounded-lg" />
+          <img src="/logo-kabrakeng.jpeg" alt="KABRAK Eng" className="h-16 w-auto group-hover:scale-105 transition-transform object-contain rounded-xl" />
         </Link>
 
         {/* Desktop links */}

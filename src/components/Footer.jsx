@@ -38,7 +38,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="mb-4">
-              <img src="/logo-kabrakeng.jpeg" alt="KABRAK Eng" className="h-14 w-auto object-contain rounded-lg" />
+              <img src="/logo-kabrakeng.jpeg" alt="KABRAK Eng" className="h-20 w-auto object-contain rounded-xl" />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs mb-5">
               {t.footer.tagline}
