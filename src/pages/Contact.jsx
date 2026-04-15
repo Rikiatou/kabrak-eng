@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Mail, MapPin, Clock, Send, MessageCircle, ArrowRight, CheckCircle } from 'lucide-react';
 
 function useReveal() {
@@ -24,10 +25,24 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
-    // Simulate send (replace with real email service / EmailJS / API)
-    await new Promise((r) => setTimeout(r, 1500));
-    setSending(false);
-    setSent(true);
+    try {
+      await emailjs.send(
+        'service_qoa8cco',
+        'template_szlgd0f',
+        {
+          from_name: form.name,
+          from_email: form.email,
+          service: form.service,
+          message: form.message,
+        },
+        'L3oI8SYlm0E7V65jQ'
+      );
+      setSent(true);
+    } catch (err) {
+      alert('Erreur lors de l\'envoi. Veuillez réessayer ou nous contacter sur WhatsApp.');
+    } finally {
+      setSending(false);
+    }
   };
 
   const phone = '237653561862';
