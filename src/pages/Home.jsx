@@ -98,12 +98,6 @@ export default function Home() {
 
         <div className="relative z-10 text-center px-5 pt-20 pb-16 max-w-4xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/30
-            bg-blue-500/10 text-blue-300 text-xs font-medium mb-8 fade-in-up">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 pulse-dot" />
-            Basé en Afrique · Présence internationale
-          </div>
-
           <h1 className="font-display font-black text-5xl sm:text-6xl md:text-7xl text-white leading-tight mb-6 fade-in-up"
             style={{ animationDelay: '0.1s' }}>
             Empowering African<br />

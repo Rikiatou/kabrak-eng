@@ -162,7 +162,7 @@ export default function Contact() {
                     Merci pour votre message. On vous répond dans les 24h. En attendant, vous pouvez aussi nous joindre sur WhatsApp.
                   </p>
                   <a
-                    href={`https://wa.me/237600000000?text=${whatsappMsg}`}
+                    href={`https://wa.me/${phone}?text=${whatsappMsg}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all"
