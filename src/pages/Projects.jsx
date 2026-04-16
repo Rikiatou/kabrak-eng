@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ExternalLink, CheckCircle, Star, Code2 } from 'lucide-react';
+import { useLang } from '../context/LangContext';
 
 function useReveal() {
   useEffect(() => {
@@ -16,6 +17,8 @@ function useReveal() {
 
 export default function Projects() {
   useReveal();
+  const { t } = useLang();
+  const p = t.projects;
 
   return (
     <main className="pt-24 overflow-x-hidden">
@@ -25,12 +28,12 @@ export default function Projects() {
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.1) 0%, transparent 65%)' }} />
         <div className="max-w-3xl mx-auto px-5 text-center relative z-10">
-          <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">Portfolio</span>
+          <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{p.label}</span>
           <h1 className="font-display font-black text-5xl text-white mb-6">
-            Nos <span className="gradient-text">Projets</span>
+            {p.title} <span className="gradient-text">{p.titleSpan}</span>
           </h1>
           <p className="text-slate-400 text-lg leading-relaxed">
-            Des produits concrets, construits pour résoudre de vrais problèmes africains.
+            {p.sub}
           </p>
         </div>
       </section>
@@ -59,7 +62,7 @@ export default function Projects() {
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium
                   bg-green-500/15 text-green-400 border border-green-500/30">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-400 pulse-dot" />
-                  En production · kabrakopticpro.com
+                  {p.badge}
                 </span>
               </div>
 
@@ -71,20 +74,11 @@ export default function Projects() {
               </div>
 
               <p className="text-slate-300 text-sm leading-relaxed mb-6">
-                Une plateforme SaaS complète dédiée aux opticiens d'Afrique. Gestion des ventes,
-                inventaire, patients, prescriptions, assurances et bordereau de transmission —
-                le tout en un seul outil. Multi-tenant, multi-magasins, analytics temps réel.
+                {p.desc}
               </p>
 
               <div className="grid grid-cols-2 gap-2 mb-8">
-                {[
-                  'Multi-tenant & multi-magasins',
-                  'Gestion assurances & bordereau PDF',
-                  'Analytics & KPIs temps réel',
-                  'Facturation & proformas PDF',
-                  'Gestion stocks & inventaire',
-                  'Interface simple, mobile-ready',
-                ].map((f) => (
+                {p.features.map((f) => (
                   <div key={f} className="flex items-start gap-2 text-xs text-slate-300">
                     <CheckCircle className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
                     <span>{f}</span>
@@ -100,7 +94,7 @@ export default function Projects() {
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500
                     text-white font-bold text-sm transition-all glow-btn group"
                 >
-                  Visiter kabrakopticpro.com
+                  {p.visitBtn}
                   <ExternalLink className="w-4 h-4" />
                 </a>
                 <Link
@@ -108,7 +102,7 @@ export default function Projects() {
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-600
                     hover:border-blue-500/60 text-slate-300 hover:text-white font-semibold text-sm transition-all"
                 >
-                  Projet similaire ?
+                  {p.similarBtn}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -164,14 +158,13 @@ export default function Projects() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/30
             bg-blue-500/10 text-blue-300 text-xs font-medium mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-400 pulse-dot" />
-            Nouveaux projets en cours
+            {p.ctaTitle}
           </div>
           <h2 className="font-display font-black text-3xl text-white mb-4">
-            D'autres produits arrivent bientôt
+            {p.ctaTitle}
           </h2>
           <p className="text-slate-400 text-sm max-w-md mx-auto mb-8 leading-relaxed">
-            Nous travaillons sur de nouveaux produits. Revenez bientôt ou contactez-nous
-            si vous voulez être parmi les premiers à les découvrir.
+            {p.ctaSub}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
@@ -179,7 +172,7 @@ export default function Projects() {
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500
                 text-white font-bold text-sm transition-all glow-btn group"
             >
-              Discuter d'un projet
+              {p.ctaBtn1}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
@@ -189,7 +182,7 @@ export default function Projects() {
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl border border-slate-700
                 hover:border-blue-500/50 text-slate-300 hover:text-white font-semibold text-sm transition-all"
             >
-              Voir Kabrak Optic Pro
+              {p.ctaBtn2}
               <ExternalLink className="w-4 h-4" />
             </a>
           </div>

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useLang } from '../context/LangContext';
 import {
   Code2, Brain, Globe, ArrowRight, CheckCircle,
   Users, Briefcase, Star, TrendingUp, ChevronRight,
@@ -82,6 +83,8 @@ function HeroCanvas() {
 /* ─────────────────────────────────────────────────── */
 export default function Home() {
   useReveal();
+  const { t } = useLang();
+  const h = t.home;
 
   return (
     <main className="overflow-x-hidden">
@@ -100,15 +103,14 @@ export default function Home() {
           {/* Badge */}
           <h1 className="font-display font-black text-5xl sm:text-6xl md:text-7xl text-white leading-tight mb-6 fade-in-up"
             style={{ animationDelay: '0.1s' }}>
-            Empowering African<br />
-            <span className="shimmer-text">Businesses</span> Through<br />
-            <span className="gradient-text">Smart Technology</span>
+            {h.heroTitle1}<br />
+            <span className="shimmer-text">{h.heroTitle2}</span> {h.heroTitle3}<br />
+            <span className="gradient-text">{h.heroTitle4}</span>
           </h1>
 
           <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed fade-in-up"
             style={{ animationDelay: '0.25s' }}>
-            KABRAK Eng conçoit des solutions digitales sur-mesure adaptées aux réalités africaines —
-            rapides, robustes et pensées pour scaler.
+            {h.heroSub}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in-up"
@@ -119,7 +121,7 @@ export default function Home() {
                 flex items-center gap-2 transition-all glow-btn"
             >
               <Rocket className="w-4 h-4" />
-              Découvrir nos services
+              {h.heroBtn1}
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
@@ -127,16 +129,16 @@ export default function Home() {
               className="px-7 py-3.5 rounded-xl border border-slate-600 hover:border-blue-500/60
                 text-slate-300 hover:text-white font-semibold text-sm flex items-center gap-2 transition-all"
             >
-              Nous contacter
+              {h.heroBtn2}
             </Link>
           </div>
 
           {/* Trust pills */}
           <div className="mt-14 flex flex-wrap justify-center gap-4 text-xs text-slate-400 fade-in-up"
             style={{ animationDelay: '0.55s' }}>
-            {['100% Made in Africa', 'Mobile-first', 'Low-bandwidth ready', 'Livraison rapide'].map((t) => (
+            {h.trustPills.map((pill) => (
               <span key={t} className="flex items-center gap-1.5">
-                <CheckCircle className="w-3.5 h-3.5 text-blue-400" /> {t}
+                <CheckCircle className="w-3.5 h-3.5 text-blue-400" /> {pill}
               </span>
             ))}
           </div>
@@ -150,36 +152,18 @@ export default function Home() {
       {/* ══ SERVICES ══════════════════════════════════════ */}
       <section className="py-24 max-w-6xl mx-auto px-5">
         <div className="text-center mb-14 reveal">
-          <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">Ce que nous faisons</span>
-          <h2 className="font-display font-black text-4xl text-white mb-4">Nos domaines d'expertise</h2>
+          <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{h.servicesLabel}</span>
+          <h2 className="font-display font-black text-4xl text-white mb-4">{h.servicesTitle}</h2>
           <p className="text-slate-400 max-w-xl mx-auto text-sm leading-relaxed">
-            Des solutions concrètes qui simplifient, automatisent et transforment votre business.
+            {h.servicesSub}
           </p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-3">
           {[
-            {
-              icon: Code2,
-              color: '#3b82f6',
-              title: 'Développement Logiciel',
-              sub: 'Plateformes, SaaS & applications web',
-              desc: 'Applications web sur-mesure et plateformes SaaS complètes. Du prototype au produit scalable, nous gérons tout le cycle.',
-            },
-            {
-              icon: Brain,
-              color: '#8b5cf6',
-              title: 'Intelligence Artificielle',
-              sub: 'Automatisation & prédictions',
-              desc: 'Automatisez vos processus, prenez de meilleures décisions. Chatbots, prédictions de ventes, recommandations intelligentes.',
-            },
-            {
-              icon: Globe,
-              color: '#06b6d4',
-              title: 'Solutions Digitales',
-              sub: "Outils pensés pour l'Afrique",
-              desc: 'Des outils adaptés aux contraintes locales : connexion lente, Mobile Money, interfaces simples et puissantes.',
-            },
+            { icon: Code2, color: '#3b82f6', ...h.services[0] },
+            { icon: Brain, color: '#8b5cf6', ...h.services[1] },
+            { icon: Globe, color: '#06b6d4', ...h.services[2] },
           ].map(({ icon: Icon, color, title, sub, desc }) => (
             <div key={title}
               className="card-hover rounded-2xl p-7 border border-slate-800 bg-[#0a1628]/60 group cursor-pointer">
@@ -197,7 +181,7 @@ export default function Home() {
         <div className="text-center mt-10 reveal">
           <Link to="/services"
             className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors group">
-            Voir tous nos services
+            {h.servicesLink}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -208,22 +192,22 @@ export default function Home() {
         style={{ background: 'linear-gradient(135deg, #0a1628 0%, #050a14 50%, #0a1628 100%)' }}>
         <div className="max-w-6xl mx-auto px-5">
           <div className="text-center mb-12 reveal">
-            <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">Notre impact</span>
+            <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{h.impactLabel}</span>
             <h2 className="font-display font-black text-4xl text-white mb-4">
-              We build technology<br />
-              <span className="gradient-text">that works for Africa</span>
+              {h.impactTitle1}<br />
+              <span className="gradient-text">{h.impactTitle2}</span>
             </h2>
             <p className="text-slate-400 text-sm max-w-lg mx-auto">
-              Nous créons des solutions adaptées aux réalités africaines — accessibles, durables et prêtes à scaler.
+              {h.impactSub}
             </p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-14">
             {[
-              { num: '+10', label: 'Projets réalisés', icon: Briefcase, color: '#3b82f6' },
-              { num: '+5', label: 'Clients satisfaits', icon: Users, color: '#8b5cf6' },
-              { num: '1', label: 'Produit SaaS live', icon: Rocket, color: '#06b6d4' },
-              { num: '100%', label: 'Focus Afrique', icon: Globe, color: '#10b981' },
+              { ...h.stats[0], icon: Briefcase, color: '#3b82f6' },
+              { ...h.stats[1], icon: Users, color: '#8b5cf6' },
+              { ...h.stats[2], icon: Rocket, color: '#06b6d4' },
+              { ...h.stats[3], icon: Globe, color: '#10b981' },
             ].map(({ num, label, icon: Icon, color }) => (
               <div key={label} className="reveal text-center p-6 rounded-2xl border border-slate-800 bg-[#0a1628]/40">
                 <Icon className="w-6 h-6 mx-auto mb-3" style={{ color }} />
@@ -235,9 +219,9 @@ export default function Home() {
 
           <div className="grid sm:grid-cols-3 gap-5">
             {[
-              { icon: TrendingUp, title: 'Digitalisation des PME', desc: 'Aider les petites et moyennes entreprises à passer au numérique efficacement.' },
-              { icon: Zap, title: 'Productivité accrue', desc: 'Nos outils réduisent le travail manuel et augmentent les revenus de nos clients.' },
-              { icon: Shield, title: 'Tech accessible', desc: 'Interfaces optimisées pour la 3G, Mobile Money intégré, mode hors-ligne.' },
+              { icon: TrendingUp, ...h.pillars[0] },
+              { icon: Zap, ...h.pillars[1] },
+              { icon: Shield, ...h.pillars[2] },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="reveal flex gap-4 p-5 rounded-xl border border-slate-800 bg-[#0a1628]/30">
                 <div className="w-10 h-10 rounded-lg bg-blue-600/15 border border-blue-500/25 flex items-center justify-center shrink-0">
@@ -256,8 +240,8 @@ export default function Home() {
       {/* ══ FEATURED PROJECT ══════════════════════════════ */}
       <section className="py-24 max-w-6xl mx-auto px-5">
         <div className="text-center mb-14 reveal">
-          <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">Projet phare</span>
-          <h2 className="font-display font-black text-4xl text-white mb-4">Ce que nous avons construit</h2>
+          <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{h.featuredLabel}</span>
+          <h2 className="font-display font-black text-4xl text-white mb-4">{h.featuredTitle}</h2>
         </div>
 
         <div className="reveal rounded-2xl border border-blue-900/30 overflow-hidden"
@@ -267,13 +251,11 @@ export default function Home() {
             <div className="p-10 flex flex-col justify-center">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/15 border border-green-500/30 text-green-400 text-xs font-medium mb-6 w-fit">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 pulse-dot" />
-                Déjà utilisé en conditions réelles
+                {h.featuredBadge}
               </div>
               <h3 className="font-display font-black text-3xl text-white mb-3">KABRAK Optic Pro</h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                Une plateforme SaaS complète pour les opticiens — gestion des ventes, inventaire,
-                patients, assurances et prescriptions en un seul endroit. Multi-tenant, multi-magasins,
-                PDF automatisés, analytics temps réel.
+                {h.featuredDesc}
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
@@ -282,14 +264,14 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-white
                     bg-blue-600 hover:bg-blue-500 px-5 py-2.5 rounded-xl transition-all glow-btn group">
-                  Visiter kabrakopticpro.com
+                  {h.featuredVisit}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <Link to="/projects"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300
                     hover:text-white border border-slate-700 hover:border-blue-500/50
                     px-5 py-2.5 rounded-xl transition-all w-fit group">
-                  En savoir plus
+                  {h.featuredMore}
                 </Link>
               </div>
             </div>
@@ -317,7 +299,7 @@ export default function Home() {
         <div className="text-center mt-10 reveal">
           <Link to="/projects"
             className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors group">
-            Voir tous les projets
+            {h.featuredAllProjects}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -327,33 +309,14 @@ export default function Home() {
       <section className="py-20 bg-[#0a1628]/40 border-y border-slate-800">
         <div className="max-w-6xl mx-auto px-5">
           <div className="text-center mb-12 reveal">
-            <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">Témoignages</span>
-            <h2 className="font-display font-black text-4xl text-white">Ce qu'ils disent de nous</h2>
+            <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{h.testimonialsLabel}</span>
+            <h2 className="font-display font-black text-4xl text-white">{h.testimonialsTitle}</h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-3">
-            {[
-              {
-                name: 'Nabil A.',
-                role: 'Gérant, Saoudia Optique — Douala',
-                quote: "KABRAK Eng a livré en 2 semaines ce que j'attendais depuis des mois. Interface claire, performance au top — exactement ce dont j'avais besoin.",
-                rating: 5,
-              },
-              {
-                name: 'Thierry Bogo',
-                role: 'Directeur, Bogo System — Bureau de change',
-                quote: 'Le logiciel de gestion qu\'ils ont développé pour notre bureau de change a transformé nos opérations. Rapide, fiable et parfaitement adapté à nos besoins.',
-                rating: 5,
-              },
-              {
-                name: 'Aminatou K.',
-                role: 'Responsable, Cabinet Optique — Yaoundé',
-                quote: 'Équipe très professionnelle et réactive. La plateforme simplifie notre gestion quotidienne et nos clients sont impressionnés par la fluidité du service.',
-                rating: 5,
-              },
-            ].map(({ name, role, quote, rating }) => (
+            {h.testimonials.map(({ name, role, quote }) => (
               <div key={name} className="reveal card-hover p-7 rounded-2xl border border-slate-800 bg-[#050a14]/80">
                 <div className="flex gap-0.5 mb-4">
-                  {Array.from({ length: rating }).map((_, i) => (
+                  {Array.from({ length: 5 }).map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
@@ -375,22 +338,22 @@ export default function Home() {
           <div className="absolute inset-0 grid-bg opacity-30" />
           <div className="relative z-10">
             <h2 className="font-display font-black text-3xl sm:text-4xl text-white mb-4">
-              Prêt à transformer votre business ?
+              {h.ctaTitle}
             </h2>
             <p className="text-slate-300 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
-              Discutons de votre projet. En 30 minutes, on vous propose une solution concrète et adaptée à votre budget.
+              {h.ctaSub}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/contact"
                 className="px-8 py-3.5 rounded-xl bg-white text-slate-900 font-bold text-sm hover:bg-blue-50
                   flex items-center gap-2 transition-all group">
-                Démarrer un projet
+                {h.ctaBtn1}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link to="/projects"
                 className="px-8 py-3.5 rounded-xl border border-white/20 text-white font-semibold text-sm
                   hover:border-white/40 hover:bg-white/5 transition-all">
-                Voir nos projets
+                {h.ctaBtn2}
               </Link>
             </div>
           </div>
