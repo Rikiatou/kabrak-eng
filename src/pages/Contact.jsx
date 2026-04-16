@@ -146,14 +146,9 @@ export default function Contact() {
 
             {/* What to expect */}
             <div className="reveal p-6 rounded-2xl border border-slate-800 bg-[#0a1628]/30">
-              <div className="text-white font-semibold text-sm mb-4">Ce qui se passe ensuite</div>
+              <div className="text-white font-semibold text-sm mb-4">{c.nextTitle}</div>
               <ul className="space-y-3">
-                {[
-                  'On vous répond sous 24h',
-                  'Appel découverte de 30 min',
-                  'Devis détaillé sous 48h',
-                  'Démarrage du projet',
-                ].map((step, i) => (
+                {c.nextSteps.map((step, i) => (
                   <li key={step} className="flex items-center gap-3 text-sm text-slate-300">
                     <span className="w-5 h-5 rounded-full bg-blue-600/20 border border-blue-500/30 text-blue-400
                       text-xs flex items-center justify-center font-bold shrink-0">

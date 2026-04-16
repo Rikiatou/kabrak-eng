@@ -158,6 +158,8 @@ export const translations = {
       sentTitle: 'Message envoyé !',
       sentSub: 'Merci pour votre message. On vous répond dans les 24h. En attendant, vous pouvez aussi nous joindre sur WhatsApp.',
       continueWa: 'Continuer sur WhatsApp',
+      nextTitle: 'Ce qui se passe ensuite',
+      nextSteps: ['On vous répond sous 24h', 'Appel découverte de 30 min', 'Devis détaillé sous 48h', 'Démarrage du projet'],
     },
   },
   en: {
@@ -315,6 +317,8 @@ export const translations = {
       sentTitle: 'Message sent!',
       sentSub: 'Thank you for your message. We\'ll reply within 24h. In the meantime, you can also reach us on WhatsApp.',
       continueWa: 'Continue on WhatsApp',
+      nextTitle: 'What happens next',
+      nextSteps: ['We reply within 24h', '30-min discovery call', 'Detailed quote within 48h', 'Project kickoff'],
     },
   },
 };
