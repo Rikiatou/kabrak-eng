@@ -142,7 +142,7 @@ export default function Projects() {
         visualContent={
           <>
             <img
-              src="/logo-kabrakeng.jpeg"
+              src="/logo-kabrakopticpro.png"
               alt="Kabrak Optic Pro"
               className="w-24 h-24 rounded-2xl mx-auto mb-5 object-cover float-anim glow-blue"
             />
