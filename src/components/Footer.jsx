@@ -4,7 +4,7 @@ import { useLang } from '../context/LangContext';
 
 
 export default function Footer() {
-  const year = new Date().getFullYear();
+  const year = 2025;
   const { t, lang } = useLang();
   const phone = '237653561862';
   const waMsg = encodeURIComponent(t.whatsapp);
