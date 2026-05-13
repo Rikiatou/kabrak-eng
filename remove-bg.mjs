@@ -1,7 +1,7 @@
 import sharp from 'sharp';
 
 // Load the image, make white background transparent, save as PNG
-const input = './public/logo-kabrakeng2.jpeg';
+const input = './public/logo-kabrakeng-new.png';
 const output = './public/logo-kabrakeng.png';
 
 const { data, info } = await sharp(input)
@@ -23,7 +23,7 @@ const seed = (x, y) => {
   if (visited[idx]) return;
   const pi = idx * channels;
   const r = pixels[pi], g = pixels[pi+1], b = pixels[pi+2];
-  if (r > 245 && g > 245 && b > 245) {
+  if (r > 200 && g > 200 && b > 200) {
     visited[idx] = 1;
     queue.push([x, y]);
   }
@@ -42,7 +42,7 @@ while (queue.length > 0) {
     if (visited[ni]) continue;
     const pi = ni * channels;
     const r = pixels[pi], g = pixels[pi+1], b = pixels[pi+2];
-    if (r > 240 && g > 240 && b > 240) {
+    if (r > 180 && g > 180 && b > 180) {
       visited[ni] = 1;
       queue.push([nx, ny]);
     }
