@@ -78,7 +78,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-          <span>© {year} KABRAK Engineering. {t.footer.rights}</span>
+          <span>© {year} KABRAK ENG. {t.footer.rights}</span>
           <span className="flex items-center gap-1">
             {t.footer.builtIn} <span className="text-blue-400 font-medium">Cameroun</span> 🇨�
           </span>
