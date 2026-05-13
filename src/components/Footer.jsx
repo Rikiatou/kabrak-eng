@@ -14,8 +14,12 @@ export default function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="mb-4">
-              <img src="/logo-kabrakeng.png" alt="KABRAK Eng" className="h-20 w-auto object-contain" />
+            <div className="mb-4 flex items-center gap-2">
+              <img src="/logo-kabrakeng.png" alt="K" className="h-14 w-auto object-contain" style={{filter:'drop-shadow(0 2px 8px rgba(59,130,246,0.4))'}} />
+              <span className="font-black text-lg tracking-widest leading-none">
+                <span className="text-white">KABRAK</span>
+                <span className="text-yellow-400"> ENG</span>
+              </span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs mb-5">
               {t.footer.tagline}

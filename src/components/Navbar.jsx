@@ -30,8 +30,12 @@ export default function Navbar() {
       ${scrolled ? 'bg-[#050a14]/90 border-b border-blue-900/30 shadow-lg shadow-black/30' : 'bg-transparent'}`}>
       <div className="max-w-6xl mx-auto px-5 flex items-center justify-between h-20">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
-          <img src="/logo-kabrakeng.png" alt="KABRAK Eng" className="h-16 w-auto group-hover:scale-105 transition-transform object-contain" />
+        <Link to="/" className="flex items-center gap-2 group group-hover:scale-105 transition-transform">
+          <img src="/logo-kabrakeng.png" alt="K" className="h-14 w-auto object-contain" style={{filter:'drop-shadow(0 2px 8px rgba(59,130,246,0.4))'}} />
+          <span className="font-black text-lg tracking-widest leading-none">
+            <span className="text-white">KABRAK</span>
+            <span className="text-yellow-400"> ENG</span>
+          </span>
         </Link>
 
         {/* Desktop links */}
