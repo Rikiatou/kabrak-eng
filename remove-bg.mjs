@@ -1,7 +1,7 @@
 import sharp from 'sharp';
 
 // Load the image, make white background transparent, save as PNG
-const input = './public/logo-kabrakeng.jpeg';
+const input = './public/logo-kabrakeng2.jpeg';
 const output = './public/logo-kabrakeng.png';
 
 const { data, info } = await sharp(input)

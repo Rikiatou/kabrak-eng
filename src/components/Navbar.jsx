@@ -31,7 +31,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-5 flex items-center justify-between h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
-          <img src="/logo-kabrakeng.jpeg" alt="KABRAK Eng" className="h-16 w-auto group-hover:scale-105 transition-transform object-contain" />
+          <img src="/logo-kabrakeng.png" alt="KABRAK Eng" className="h-16 w-auto group-hover:scale-105 transition-transform object-contain" />
         </Link>
 
         {/* Desktop links */}
