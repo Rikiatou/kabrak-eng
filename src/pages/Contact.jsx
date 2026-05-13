@@ -62,10 +62,10 @@ export default function Contact() {
           style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.1) 0%, transparent 65%)' }} />
         <div className="max-w-3xl mx-auto px-5 text-center relative z-10">
           <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{c.label}</span>
-          <h1 className="font-display font-black text-5xl text-white mb-6">
+          <h1 className="font-display font-black text-3xl sm:text-5xl text-white mb-6">
             <span className="gradient-text">{c.title}</span>
           </h1>
-          <p className="text-slate-400 text-lg leading-relaxed">
+          <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
             {c.sub}
           </p>
         </div>

@@ -95,13 +95,13 @@ export default function Home() {
 
         {/* Radial glow behind text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-          w-[600px] h-[600px] rounded-full pointer-events-none"
+          w-[280px] h-[280px] sm:w-[600px] sm:h-[600px] rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%)' }}
         />
 
         <div className="relative z-10 text-center px-5 pt-20 pb-16 max-w-4xl mx-auto">
           {/* Badge */}
-          <h1 className="font-display font-black text-5xl sm:text-6xl md:text-7xl text-white leading-tight mb-6 fade-in-up"
+          <h1 className="font-display font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6 fade-in-up"
             style={{ animationDelay: '0.1s' }}>
             {h.heroTitle1}<br />
             <span className="shimmer-text">{h.heroTitle2}</span> {h.heroTitle3}<br />
@@ -153,7 +153,7 @@ export default function Home() {
       <section className="py-24 max-w-6xl mx-auto px-5">
         <div className="text-center mb-14 reveal">
           <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{h.servicesLabel}</span>
-          <h2 className="font-display font-black text-4xl text-white mb-4">{h.servicesTitle}</h2>
+          <h2 className="font-display font-black text-2xl sm:text-4xl text-white mb-4">{h.servicesTitle}</h2>
           <p className="text-slate-400 max-w-xl mx-auto text-sm leading-relaxed">
             {h.servicesSub}
           </p>
@@ -193,7 +193,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-5">
           <div className="text-center mb-12 reveal">
             <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{h.impactLabel}</span>
-            <h2 className="font-display font-black text-4xl text-white mb-4">
+            <h2 className="font-display font-black text-2xl sm:text-4xl text-white mb-4">
               {h.impactTitle1}<br />
               <span className="gradient-text">{h.impactTitle2}</span>
             </h2>
@@ -241,14 +241,14 @@ export default function Home() {
       <section className="py-24 max-w-6xl mx-auto px-5">
         <div className="text-center mb-14 reveal">
           <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{h.featuredLabel}</span>
-          <h2 className="font-display font-black text-4xl text-white mb-4">{h.featuredTitle}</h2>
+          <h2 className="font-display font-black text-2xl sm:text-4xl text-white mb-4">{h.featuredTitle}</h2>
         </div>
 
         <div className="reveal rounded-2xl border border-blue-900/30 overflow-hidden"
           style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0f1f3d 100%)' }}>
           <div className="grid md:grid-cols-2 gap-0">
             {/* Info */}
-            <div className="p-10 flex flex-col justify-center">
+            <div className="p-6 sm:p-10 flex flex-col justify-center">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/15 border border-green-500/30 text-green-400 text-xs font-medium mb-6 w-fit">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 pulse-dot" />
                 {h.featuredBadge}
@@ -310,7 +310,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-5">
           <div className="text-center mb-12 reveal">
             <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{h.testimonialsLabel}</span>
-            <h2 className="font-display font-black text-4xl text-white">{h.testimonialsTitle}</h2>
+            <h2 className="font-display font-black text-2xl sm:text-4xl text-white">{h.testimonialsTitle}</h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-3">
             {h.testimonials.map(({ name, role, quote }) => (
@@ -333,11 +333,11 @@ export default function Home() {
 
       {/* ══ CTA BANNER ════════════════════════════════════ */}
       <section className="py-24 max-w-6xl mx-auto px-5">
-        <div className="reveal rounded-2xl p-12 text-center relative overflow-hidden"
+        <div className="reveal rounded-2xl p-6 sm:p-12 text-center relative overflow-hidden"
           style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #1e1b4b 50%, #0f172a 100%)', border: '1px solid rgba(99,102,241,0.3)' }}>
           <div className="absolute inset-0 grid-bg opacity-30" />
           <div className="relative z-10">
-            <h2 className="font-display font-black text-3xl sm:text-4xl text-white mb-4">
+            <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-white mb-4">
               {h.ctaTitle}
             </h2>
             <p className="text-slate-300 text-sm max-w-lg mx-auto mb-8 leading-relaxed">

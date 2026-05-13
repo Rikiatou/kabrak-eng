@@ -29,10 +29,10 @@ export default function About() {
           style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.1) 0%, transparent 65%)' }} />
         <div className="max-w-3xl mx-auto px-5 text-center relative z-10">
           <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{a.label}</span>
-          <h1 className="font-display font-black text-5xl text-white mb-6">
+          <h1 className="font-display font-black text-3xl sm:text-5xl text-white mb-6">
             {a.title} <span className="gradient-text">KABRAK Eng</span>
           </h1>
-          <p className="text-slate-400 text-lg leading-relaxed">
+          <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
             {a.sub}
           </p>
         </div>
@@ -43,7 +43,7 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-14 items-center">
           {/* Visual */}
           <div className="reveal relative">
-            <div className="rounded-2xl overflow-hidden border border-blue-900/30 p-10 text-center"
+            <div className="rounded-2xl overflow-hidden border border-blue-900/30 p-6 sm:p-10 text-center"
               style={{ background: 'linear-gradient(135deg, #0a1628, #0f1f3d)' }}>
               <div className="w-28 h-28 rounded-2xl mx-auto mb-6 flex items-center justify-center float-anim glow-blue"
                 style={{ background: 'linear-gradient(135deg, #1e3a8a, #3b82f6)' }}>
@@ -72,7 +72,7 @@ export default function About() {
           {/* Text */}
           <div className="reveal">
             <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{a.whoLabel}</span>
-            <h2 className="font-display font-black text-4xl text-white mb-6">
+            <h2 className="font-display font-black text-2xl sm:text-4xl text-white mb-6">
               {a.whoTitle1}<br />
               <span className="gradient-text">{a.whoTitle2}</span>
             </h2>
@@ -97,7 +97,7 @@ export default function About() {
       <section className="py-20 border-y border-slate-800 bg-[#0a1628]/30">
         <div className="max-w-6xl mx-auto px-5">
           <div className="text-center mb-14 reveal">
-            <h2 className="font-display font-black text-4xl text-white">{a.guideTitle}</h2>
+            <h2 className="font-display font-black text-2xl sm:text-4xl text-white">{a.guideTitle}</h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-3">
             {[
@@ -122,7 +122,7 @@ export default function About() {
       <section className="py-24 max-w-6xl mx-auto px-5">
         <div className="text-center mb-14 reveal">
           <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{a.whyLabel}</span>
-          <h2 className="font-display font-black text-4xl text-white">
+          <h2 className="font-display font-black text-2xl sm:text-4xl text-white">
             {a.whyTitle}
           </h2>
         </div>
@@ -147,7 +147,7 @@ export default function About() {
 
       {/* ── CTA ─────────────────────────────────────────── */}
       <section className="py-16 max-w-4xl mx-auto px-5 text-center reveal">
-        <h2 className="font-display font-black text-3xl text-white mb-4">
+        <h2 className="font-display font-black text-2xl sm:text-3xl text-white mb-4">
           {a.ctaTitle}
         </h2>
         <p className="text-slate-400 text-sm mb-8 max-w-md mx-auto leading-relaxed">

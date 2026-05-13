@@ -36,10 +36,10 @@ export default function Services() {
           style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.1) 0%, transparent 65%)' }} />
         <div className="max-w-3xl mx-auto px-5 text-center relative z-10">
           <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{s.label}</span>
-          <h1 className="font-display font-black text-5xl text-white mb-6">
+          <h1 className="font-display font-black text-3xl sm:text-5xl text-white mb-6">
             {s.title} <span className="gradient-text">{s.titleSpan}</span>
           </h1>
-          <p className="text-slate-400 text-lg leading-relaxed">
+          <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
             {s.sub}
           </p>
         </div>
@@ -94,7 +94,7 @@ export default function Services() {
         <div className="max-w-6xl mx-auto px-5">
           <div className="text-center mb-14 reveal">
             <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{s.processLabel}</span>
-            <h2 className="font-display font-black text-4xl text-white">{s.processTitle}</h2>
+            <h2 className="font-display font-black text-2xl sm:text-4xl text-white">{s.processTitle}</h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-4">
             {s.process.map(({ num, title, desc }, i) => {
@@ -118,7 +118,7 @@ export default function Services() {
           bg-blue-500/10 text-blue-300 text-xs font-medium mb-6">
           <Zap className="w-3.5 h-3.5" /> {s.ctaBadge}
         </div>
-        <h2 className="font-display font-black text-3xl text-white mb-4">
+        <h2 className="font-display font-black text-2xl sm:text-3xl text-white mb-4">
           {s.ctaTitle}
         </h2>
         <p className="text-slate-400 text-sm mb-8 max-w-md mx-auto leading-relaxed">

@@ -23,7 +23,7 @@ function ProjectCard({ accentColor, borderColor, badgeText, title, subtitle, des
         <div className="grid md:grid-cols-2 gap-0">
 
           {/* Left — info */}
-          <div className="p-10 flex flex-col justify-center">
+          <div className="p-5 sm:p-10 flex flex-col justify-center">
             <div className="flex items-center gap-2 mb-6">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium
                 bg-green-500/15 text-green-400 border border-green-500/30">
@@ -31,7 +31,7 @@ function ProjectCard({ accentColor, borderColor, badgeText, title, subtitle, des
                 {badgeText}
               </span>
             </div>
-            <h2 className="font-display font-black text-4xl text-white mb-3">{title}</h2>
+            <h2 className="font-display font-black text-2xl sm:text-4xl text-white mb-3">{title}</h2>
             <div className="text-sm font-medium mb-5" style={{ color: accentColor }}>{subtitle}</div>
             <p className="text-slate-300 text-sm leading-relaxed mb-6">{desc}</p>
             <div className="grid grid-cols-2 gap-2 mb-8">
@@ -61,7 +61,7 @@ function ProjectCard({ accentColor, borderColor, badgeText, title, subtitle, des
           {/* Right — visual */}
           <div className="relative min-h-[320px] bg-[#050a14] flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 grid-bg opacity-50" />
-            <div className="relative z-10 text-center p-10">
+            <div className="relative z-10 text-center p-5 sm:p-10">
               {visualContent}
               <div className="flex flex-wrap justify-center gap-2 text-xs mt-5">
                 {tags.map((tag) => (
@@ -109,10 +109,10 @@ export default function Projects() {
           style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.1) 0%, transparent 65%)' }} />
         <div className="max-w-3xl mx-auto px-5 text-center relative z-10">
           <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{p.label}</span>
-          <h1 className="font-display font-black text-5xl text-white mb-6">
+          <h1 className="font-display font-black text-3xl sm:text-5xl text-white mb-6">
             {p.title} <span className="gradient-text">{p.titleSpan}</span>
           </h1>
-          <p className="text-slate-400 text-lg leading-relaxed">{p.sub}</p>
+          <p className="text-slate-400 text-base sm:text-lg leading-relaxed">{p.sub}</p>
         </div>
       </section>
 
@@ -182,7 +182,7 @@ export default function Projects() {
       {/* ── CTA ─────────────────────────────────────────── */}
       <section className="py-16 border-t border-slate-800">
         <div className="max-w-4xl mx-auto px-5 text-center reveal">
-          <h2 className="font-display font-black text-3xl text-white mb-4">{p.ctaTitle}</h2>
+          <h2 className="font-display font-black text-2xl sm:text-3xl text-white mb-4">{p.ctaTitle}</h2>
           <p className="text-slate-400 text-sm max-w-md mx-auto mb-8 leading-relaxed">{p.ctaSub}</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/contact"
