@@ -145,6 +145,40 @@ export default function About() {
         </div>
       </section>
 
+      {/* ── CEO ─────────────────────────────────────────── */}
+      <section className="py-20 border-y border-slate-800 bg-[#0a1628]/30">
+        <div className="max-w-5xl mx-auto px-5">
+          <div className="text-center mb-12 reveal">
+            <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">Leadership</span>
+            <h2 className="font-display font-black text-2xl sm:text-4xl text-white">À la tête de <span className="gradient-text">KABRAK ENG</span></h2>
+          </div>
+          <div className="reveal flex flex-col md:flex-row items-center gap-10">
+            {/* Photo */}
+            <div className="flex-shrink-0">
+              <div className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-2xl overflow-hidden border-2 border-blue-500/30 shadow-xl shadow-blue-900/30">
+                <img src="/ceo-rikiatou.jpeg" alt="Rikiatou Hassan Sale" className="w-full h-full object-cover object-top" />
+              </div>
+            </div>
+            {/* Text */}
+            <div className="text-center md:text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/15 border border-blue-500/30 text-blue-400 text-xs font-semibold mb-4">
+                Fondatrice &amp; CEO
+              </div>
+              <h3 className="font-display font-black text-2xl sm:text-3xl text-white mb-1">RIKIATOU HASSAN SALE</h3>
+              <p className="text-yellow-400 text-sm font-medium mb-5">Épouse Kabir</p>
+              <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-lg">
+                Ingénieure en développement logiciel, Rikiatou est la force créatrice derrière KABRAK ENG.
+                Avec une vision claire et une expertise technique pointue, elle conçoit des solutions digitales
+                qui propulsent les entreprises africaines vers l&apos;excellence.
+              </p>
+              <blockquote className="border-l-4 border-blue-500 pl-4 italic text-white font-semibold text-sm sm:text-base">
+                &ldquo;Innovation · Performance · Excellence&rdquo;
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ─────────────────────────────────────────── */}
       <section className="py-16 max-w-4xl mx-auto px-5 text-center reveal">
         <h2 className="font-display font-black text-2xl sm:text-3xl text-white mb-4">
