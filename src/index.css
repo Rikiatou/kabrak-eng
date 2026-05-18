@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; overscroll-behavior: none; }
+html { overscroll-behavior: none; }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
@@ -77,8 +77,8 @@ body {
   animation: shimmer 4s linear infinite;
 }
 
-.reveal { opacity: 0; transform: translateY(20px) translateZ(0); transition: opacity 0.5s ease, transform 0.5s ease; will-change: opacity, transform; }
-.reveal.visible { opacity: 1; transform: translateY(0) translateZ(0); will-change: auto; }
+.reveal { opacity: 0; transition: opacity 0.45s ease; }
+.reveal.visible { opacity: 1; }
 
 @keyframes pulse-dot {
   0%, 100% { transform: scale(1); opacity: 1; }
