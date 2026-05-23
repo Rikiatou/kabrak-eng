@@ -179,6 +179,33 @@ export default function Projects() {
         }
       />
 
+      {/* ── KABRAK Beauty & Spa Pro ─────────────────────── */}
+      <div className="border-t border-slate-800/60" />
+      <ProjectCard
+        accentColor="#ec4899"
+        borderColor="border-pink-600/40"
+        badgeText={p.beautyBadge}
+        title={p.beautyTitle}
+        subtitle={p.beautySubtitle}
+        desc={p.beautyDesc}
+        features={p.beautyFeatures}
+        visitUrl="https://beautyspa.kabrakeng.com"
+        visitBtn={p.beautyVisitBtn}
+        similarBtn={p.beautySimilarBtn}
+        stats={p.beautyStats}
+        tags={['SaaS', 'PWA', 'Rendez-vous', 'Caisse', 'Multi-thèmes']}
+        visualContent={
+          <>
+            <div className="w-24 h-24 rounded-2xl mx-auto mb-5 flex items-center justify-center float-anim"
+              style={{ background: 'linear-gradient(135deg, #be185d, #ec4899)' }}>
+              <span className="text-4xl">🌸</span>
+            </div>
+            <div className="text-white font-bold text-2xl font-display mb-1">KABRAK Beauty & Spa Pro</div>
+            <div className="text-slate-400 text-sm">beautyspa.kabrakeng.com</div>
+          </>
+        }
+      />
+
       {/* ── CTA ─────────────────────────────────────────── */}
       <section className="py-16 border-t border-slate-800">
         <div className="max-w-4xl mx-auto px-5 text-center reveal">
