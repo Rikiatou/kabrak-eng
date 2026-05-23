@@ -196,10 +196,12 @@ export default function Projects() {
         tags={['SaaS', 'PWA', 'Rendez-vous', 'Caisse', 'Multi-thèmes']}
         visualContent={
           <>
-            <div className="w-24 h-24 rounded-2xl mx-auto mb-5 flex items-center justify-center float-anim"
-              style={{ background: 'linear-gradient(135deg, #be185d, #ec4899)' }}>
-              <span className="text-4xl">🌸</span>
-            </div>
+            <img
+              src="/kabrak-beauty-logo.jpg"
+              alt="KABRAK Beauty & Spa Pro"
+              className="w-24 h-24 rounded-2xl mx-auto mb-5 object-contain float-anim glow-btn"
+              style={{ background: 'linear-gradient(135deg, #be185d, #ec4899)' }}
+            />
             <div className="text-white font-bold text-2xl font-display mb-1">KABRAK Beauty & Spa Pro</div>
             <div className="text-slate-400 text-sm">beautyspa.kabrakeng.com</div>
           </>
