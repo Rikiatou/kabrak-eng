@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ExternalLink, CheckCircle, Star, TrendingUp } from 'lucide-react';
+import { ArrowRight, ExternalLink, CheckCircle, Star, TrendingUp, ShoppingBag } from 'lucide-react';
 import { useLang } from '../context/LangContext';
 
 function useReveal() {
@@ -204,6 +204,33 @@ export default function Projects() {
             />
             <div className="text-white font-bold text-2xl font-display mb-1">KABRAK Beauty & Spa Pro</div>
             <div className="text-slate-400 text-sm">beautyspa.kabrakeng.com</div>
+          </>
+        }
+      />
+
+      {/* ── KABRAK Store ─────────────────────────────────── */}
+      <div className="border-t border-slate-800/60" />
+      <ProjectCard
+        accentColor="#f59e0b"
+        borderColor="border-amber-600/40"
+        badgeText={p.storeBadge}
+        title={p.storeTitle}
+        subtitle={p.storeSubtitle}
+        desc={p.storeDesc}
+        features={p.storeFeatures}
+        visitUrl="https://store.kabrakeng.com"
+        visitBtn={p.storeVisitBtn}
+        similarBtn={p.storeSimilarBtn}
+        stats={p.storeStats}
+        tags={['SaaS', 'POS', 'Multi-tenant', 'PWA', 'Adaptatif']}
+        visualContent={
+          <>
+            <div className="w-24 h-24 rounded-2xl mx-auto mb-5 flex items-center justify-center float-anim"
+              style={{ background: 'linear-gradient(135deg, #92400e, #f59e0b)' }}>
+              <ShoppingBag className="w-12 h-12 text-white" />
+            </div>
+            <div className="text-white font-bold text-2xl font-display mb-1">KABRAK Store</div>
+            <div className="text-slate-400 text-sm">store.kabrakeng.com</div>
           </>
         }
       />
