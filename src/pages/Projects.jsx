@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ExternalLink, CheckCircle, Star, TrendingUp } from 'lucide-react';
+import { ArrowRight, ExternalLink, CheckCircle, Star, TrendingUp, Briefcase } from 'lucide-react';
 import { useLang } from '../context/LangContext';
 
 function useReveal() {
@@ -125,7 +125,38 @@ export default function Projects() {
         </div>
       </div>
 
+      {/* ── KABRAK Store (Produit Phare) ─────────────────── */}
+      <ProjectCard
+        accentColor="#f59e0b"
+        borderColor="border-amber-600/40"
+        badgeText="🏆 Produit Phare"
+        title="KABRAK Store"
+        subtitle="SaaS POS & Gestion Commerciale"
+        desc="Logiciel de point de vente multi-boutiques avec gestion des stocks, facturation, analytics et support multi-devises. Solution complète pour le commerce de détail en Afrique."
+        features={["Multi-boutiques", "Stocks en temps réel", "Facturation", "Analytics avancés", "PWA mobile", "Support Orange Money/MTN"]}
+        visitUrl="https://kabrak-store.kabrakeng.com"
+        visitBtn="Essai Gratuit"
+        similarBtn="Solution similaire"
+        stats={[
+          { num: '+500', label: 'Utilisateurs' },
+          { num: '+50', label: 'Boutiques' },
+          { num: '4.8/5', label: 'Note clients' },
+        ]}
+        tags={['SaaS', 'POS', 'Multi-tenant', 'PWA', 'Analytics']}
+        visualContent={
+          <>
+            <div className="w-24 h-24 rounded-2xl mx-auto mb-5 flex items-center justify-center float-anim"
+              style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>
+              <Briefcase className="w-12 h-12 text-white" />
+            </div>
+            <div className="text-white font-bold text-2xl font-display mb-1">KABRAK Store</div>
+            <div className="text-slate-400 text-sm">kabrak-store.kabrakeng.com</div>
+          </>
+        }
+      />
+
       {/* ── Kabrak Optic Pro ───────────────────────────── */}
+      <div className="border-t border-slate-800/60" />
       <ProjectCard
         accentColor="#3b82f6"
         borderColor="border-blue-600/40"

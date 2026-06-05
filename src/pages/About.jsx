@@ -53,9 +53,9 @@ export default function About() {
               <div className="text-blue-400 text-sm mb-5">Technology · Innovation · Africa</div>
               <div className="grid grid-cols-3 gap-4 mt-6">
                 {[
-                  { num: '+10', label: 'Projets' },
-                  { num: '+5', label: 'Clients' },
-                  { num: '1', label: 'SaaS live' },
+                  { num: '+15', label: 'Projets' },
+                  { num: '+20', label: 'Clients' },
+                  { num: '4', label: 'SaaS live' },
                 ].map(({ num, label }) => (
                   <div key={label} className="p-3 rounded-xl border border-blue-900/30 bg-[#050a14]/50">
                     <div className="font-black text-2xl text-white font-display">{num}</div>
