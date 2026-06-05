@@ -244,34 +244,34 @@ export default function Home() {
           <h2 className="font-display font-black text-2xl sm:text-4xl text-white mb-4">{h.featuredTitle}</h2>
         </div>
 
-        <div className="reveal rounded-2xl border border-blue-900/30 overflow-hidden"
+        <div className="reveal rounded-2xl border border-amber-600/30 overflow-hidden"
           style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0f1f3d 100%)' }}>
           <div className="grid md:grid-cols-2 gap-0">
             {/* Info */}
             <div className="p-6 sm:p-10 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/15 border border-green-500/30 text-green-400 text-xs font-medium mb-6 w-fit">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 pulse-dot" />
-                {h.featuredBadge}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-medium mb-6 w-fit">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 pulse-dot" />
+                🏆 Produit Phare
               </div>
-              <h3 className="font-display font-black text-3xl text-white mb-3">KABRAK Optic Pro</h3>
+              <h3 className="font-display font-black text-3xl text-white mb-3">KABRAK Store</h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                {h.featuredDesc}
+                Logiciel de point de vente multi-boutiques avec gestion des stocks, facturation, analytics et support multi-devises. Solution complète pour le commerce de détail en Afrique.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="https://kabrakopticpro.com"
+                  href="https://kabrak-store.kabrakeng.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-white
-                    bg-blue-600 hover:bg-blue-500 px-5 py-2.5 rounded-xl transition-all glow-btn group">
-                  {h.featuredVisit}
+                    bg-amber-600 hover:bg-amber-500 px-5 py-2.5 rounded-xl transition-all glow-btn group">
+                  Essai Gratuit
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <Link to="/projects"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300
-                    hover:text-white border border-slate-700 hover:border-blue-500/50
+                    hover:text-white border border-slate-700 hover:border-amber-500/50
                     px-5 py-2.5 rounded-xl transition-all w-fit group">
-                  {h.featuredMore}
+                  Voir tous les projets
                 </Link>
               </div>
             </div>
@@ -280,12 +280,12 @@ export default function Home() {
             <div className="relative h-64 md:h-auto bg-[#050a14] flex items-center justify-center overflow-hidden">
               <div className="absolute inset-0 grid-bg opacity-60" />
               <div className="relative z-10 text-center p-8">
-                <div className="w-20 h-20 rounded-2xl mx-auto mb-4 flex items-center justify-center glow-blue"
-                  style={{ background: 'linear-gradient(135deg, #1e40af, #3b82f6)' }}>
-                  <Code2 className="w-10 h-10 text-white" />
+                <div className="w-20 h-20 rounded-2xl mx-auto mb-4 flex items-center justify-center glow-amber"
+                  style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>
+                  <Briefcase className="w-10 h-10 text-white" />
                 </div>
-                <div className="text-white font-bold text-xl font-display">Kabrak Optic Pro</div>
-                <div className="text-slate-400 text-sm mt-1">Plateforme SaaS · Optique</div>
+                <div className="text-white font-bold text-xl font-display">KABRAK Store</div>
+                <div className="text-slate-400 text-sm mt-1">SaaS POS · Gestion Commerciale</div>
                 <div className="mt-4 flex justify-center gap-3 text-xs text-slate-500">
                   <span>🌍 Cameroun</span>
                   <span>·</span>
