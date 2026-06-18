@@ -100,7 +100,7 @@ function HeroCanvas() {
         if (d.y > canvas.height) d.y = 0;
         ctx.beginPath();
         ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(59,130,246,${d.alpha})`;
+        ctx.fillStyle = `rgba(201,162,39,${d.alpha})`;
         ctx.fill();
       });
       // draw connecting lines
@@ -111,7 +111,7 @@ function HeroCanvas() {
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(59,130,246,${0.12 * (1 - dist / 110)})`;
+            ctx.strokeStyle = `rgba(201,162,39,${0.12 * (1 - dist / 110)})`;
             ctx.lineWidth = 0.7;
             ctx.stroke();
           }
@@ -144,46 +144,46 @@ export default function Home() {
           style={{ background: 'radial-gradient(circle, rgba(201,162,39,0.08) 0%, transparent 70%)' }}
         />
 
-        <div className="relative z-10 text-center px-5 pt-20 pb-16 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-4 sm:px-5 pt-16 sm:pt-20 pb-12 sm:pb-16 max-w-4xl mx-auto">
           {/* Badge */}
-          <h1 className="font-display font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6 fade-in-up"
+          <h1 className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-tight mb-4 sm:mb-6 fade-in-up"
             style={{ animationDelay: '0.1s' }}>
             {h.heroTitle1}<br />
             <span className="shimmer-text">{h.heroTitle2}</span> {h.heroTitle3}<br />
             <span className="gradient-text">{h.heroTitle4}</span>
           </h1>
 
-          <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed fade-in-up"
+          <p className="text-slate-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 sm:mb-10 leading-relaxed fade-in-up"
             style={{ animationDelay: '0.25s' }}>
             {h.heroSub}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in-up"
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 fade-in-up"
             style={{ animationDelay: '0.4s' }}>
             <Link
               to="/services"
-              className="group px-7 py-3.5 rounded-xl bg-[#c9a227] hover:bg-[#b8952a] text-white font-semibold text-sm
+              className="group px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-[#c9a227] hover:bg-[#b8952a] text-white font-semibold text-xs sm:text-sm
                 flex items-center gap-2 transition-all glow-btn"
             >
-              <Rocket className="w-4 h-4" />
+              <Rocket className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               {h.heroBtn1}
-              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               to="/contact"
-              className="px-7 py-3.5 rounded-xl border border-slate-700 hover:border-[#c9a227]/50
-                text-slate-300 hover:text-white font-semibold text-sm flex items-center gap-2 transition-all"
+              className="px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl border border-slate-700 hover:border-[#c9a227]/50
+                text-slate-300 hover:text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all"
             >
               {h.heroBtn2}
             </Link>
           </div>
 
           {/* Trust pills */}
-          <div className="mt-14 flex flex-wrap justify-center gap-4 text-xs text-slate-400 fade-in-up"
+          <div className="mt-8 sm:mt-14 flex flex-wrap justify-center gap-2 sm:gap-4 text-[10px] sm:text-xs text-slate-400 fade-in-up"
             style={{ animationDelay: '0.55s' }}>
             {h.trustPills.map((pill) => (
-              <span key={t} className="flex items-center gap-1.5">
-                <CheckCircle className="w-3.5 h-3.5 text-[#c9a227]" /> {pill}
+              <span key={t} className="flex items-center gap-1 sm:gap-1.5">
+                <CheckCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#c9a227]" /> {pill}
               </span>
             ))}
           </div>
@@ -195,32 +195,32 @@ export default function Home() {
       </section>
 
       {/* ══ SERVICES ══════════════════════════════════════ */}
-      <section className="py-24 max-w-6xl mx-auto px-5">
-        <div className="text-center mb-14 reveal">
-          <span className="text-[#c9a227] text-xs font-semibold uppercase tracking-widest mb-3 block">{h.servicesLabel}</span>
-          <h2 className="font-display font-black text-2xl sm:text-4xl text-white mb-4">{h.servicesTitle}</h2>
-          <p className="text-slate-400 max-w-xl mx-auto text-sm leading-relaxed">
+      <section className="py-16 sm:py-24 max-w-6xl mx-auto px-4 sm:px-5">
+        <div className="text-center mb-10 sm:mb-14 reveal">
+          <span className="text-[#c9a227] text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">{h.servicesLabel}</span>
+          <h2 className="font-display font-black text-xl sm:text-2xl md:text-4xl text-white mb-3 sm:mb-4">{h.servicesTitle}</h2>
+          <p className="text-slate-400 max-w-xl mx-auto text-xs sm:text-sm leading-relaxed">
             {h.servicesSub}
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-3">
           {[
             { icon: CodeIcon, color: '#c9a227', ...h.services[0] },
             { icon: BrainIcon, color: '#8b6914', ...h.services[1] },
             { icon: GlobeIcon, color: '#b87333', ...h.services[2] },
           ].map(({ icon: Icon, color, title, sub, desc }) => (
             <div key={title}
-              className="card-hover rounded-2xl p-7 border border-slate-800 bg-[#1a1a1a]/60 group cursor-pointer">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+              className="card-hover rounded-2xl p-5 sm:p-7 border border-slate-800 bg-[#1a1a1a]/60 group cursor-pointer">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-3 sm:mb-5"
                 style={{ background: `${color}18`, border: `1px solid ${color}35` }}>
-                <div className="w-6 h-6" style={{ color }}>
+                <div className="w-5 h-5 sm:w-6 sm:h-6" style={{ color }}>
                   <Icon />
                 </div>
               </div>
-              <div className="text-xs font-medium mb-1" style={{ color }}>{sub}</div>
-              <h3 className="text-white font-bold text-lg mb-3">{title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">{desc}</p>
+              <div className="text-[10px] sm:text-xs font-medium mb-1" style={{ color }}>{sub}</div>
+              <h3 className="text-white font-bold text-base sm:text-lg mb-2 sm:mb-3">{title}</h3>
+              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -235,52 +235,52 @@ export default function Home() {
       </section>
 
       {/* ══ IMPACT STATS ══════════════════════════════════ */}
-      <section className="py-20 border-y border-slate-800"
+      <section className="py-12 sm:py-20 border-y border-slate-800"
         style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%)' }}>
-        <div className="max-w-6xl mx-auto px-5">
-          <div className="text-center mb-12 reveal">
-            <span className="text-[#c9a227] text-xs font-semibold uppercase tracking-widest mb-3 block">{h.impactLabel}</span>
-            <h2 className="font-display font-black text-2xl sm:text-4xl text-white mb-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-5">
+          <div className="text-center mb-8 sm:mb-12 reveal">
+            <span className="text-[#c9a227] text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">{h.impactLabel}</span>
+            <h2 className="font-display font-black text-xl sm:text-2xl md:text-4xl text-white mb-3 sm:mb-4">
               {h.impactTitle1}<br />
               <span className="gradient-text">{h.impactTitle2}</span>
             </h2>
-            <p className="text-slate-400 text-sm max-w-lg mx-auto">
+            <p className="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto">
               {h.impactSub}
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-14">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-14">
             {[
               { ...h.stats[0], icon: Briefcase, color: '#c9a227' },
               { ...h.stats[1], icon: Users, color: '#8b6914' },
               { ...h.stats[2], icon: Rocket, color: '#b87333' },
               { ...h.stats[3], icon: GlobeIcon, color: '#a67c52' },
             ].map(({ num, label, icon: Icon, color }) => (
-              <div key={label} className="reveal text-center p-6 rounded-2xl border border-slate-800 bg-[#1a1a1a]/40">
-                <div className="w-6 h-6 mx-auto mb-3" style={{ color }}>
+              <div key={label} className="reveal text-center p-3 sm:p-6 rounded-2xl border border-slate-800 bg-[#1a1a1a]/40">
+                <div className="w-4 h-4 sm:w-6 sm:h-6 mx-auto mb-2 sm:mb-3" style={{ color }}>
                   <Icon />
                 </div>
-                <div className="font-display font-black text-4xl text-white mb-1">{num}</div>
-                <div className="text-slate-400 text-xs">{label}</div>
+                <div className="font-display font-black text-2xl sm:text-4xl text-white mb-1">{num}</div>
+                <div className="text-slate-400 text-[10px] sm:text-xs">{label}</div>
               </div>
             ))}
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5">
             {[
               { icon: TrendingIcon, ...h.pillars[0] },
               { icon: ZapIcon, ...h.pillars[1] },
               { icon: ShieldIcon, ...h.pillars[2] },
             ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="reveal flex gap-4 p-5 rounded-xl border border-slate-800 bg-[#1a1a1a]/30">
-                <div className="w-10 h-10 rounded-lg bg-[#c9a227]/15 border border-[#c9a227]/25 flex items-center justify-center shrink-0">
-                  <div className="w-5 h-5 text-[#c9a227]">
+              <div key={title} className="reveal flex gap-3 sm:gap-4 p-3 sm:p-5 rounded-xl border border-slate-800 bg-[#1a1a1a]/30">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[#c9a227]/15 border border-[#c9a227]/25 flex items-center justify-center shrink-0">
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 text-[#c9a227]">
                     <Icon />
                   </div>
                 </div>
                 <div>
-                  <div className="text-white font-semibold text-sm mb-1">{title}</div>
-                  <div className="text-slate-400 text-xs leading-relaxed">{desc}</div>
+                  <div className="text-white font-semibold text-xs sm:text-sm mb-1">{title}</div>
+                  <div className="text-slate-400 text-[10px] sm:text-xs leading-relaxed">{desc}</div>
                 </div>
               </div>
             ))}
@@ -289,55 +289,55 @@ export default function Home() {
       </section>
 
       {/* ══ FEATURED PROJECT ══════════════════════════════ */}
-      <section className="py-24 max-w-6xl mx-auto px-5">
-        <div className="text-center mb-14 reveal">
-          <span className="text-[#c9a227] text-xs font-semibold uppercase tracking-widest mb-3 block">{h.featuredLabel}</span>
-          <h2 className="font-display font-black text-2xl sm:text-4xl text-white mb-4">{h.featuredTitle}</h2>
+      <section className="py-16 sm:py-24 max-w-6xl mx-auto px-4 sm:px-5">
+        <div className="text-center mb-10 sm:mb-14 reveal">
+          <span className="text-[#c9a227] text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">{h.featuredLabel}</span>
+          <h2 className="font-display font-black text-xl sm:text-2xl md:text-4xl text-white mb-3 sm:mb-4">{h.featuredTitle}</h2>
         </div>
 
         <div className="reveal rounded-2xl border border-amber-600/30 overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0f1f3d 100%)' }}>
+          style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #252525 100%)' }}>
           <div className="grid md:grid-cols-2 gap-0">
             {/* Info */}
-            <div className="p-6 sm:p-10 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-medium mb-6 w-fit">
+            <div className="p-5 sm:p-10 flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-[10px] sm:text-xs font-medium mb-4 sm:mb-6 w-fit">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-400 pulse-dot" />
                 🏆 Produit Phare
               </div>
-              <h3 className="font-display font-black text-3xl text-white mb-3">KABRAK Store</h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6">
+              <h3 className="font-display font-black text-2xl sm:text-3xl text-white mb-2 sm:mb-3">KABRAK Store</h3>
+              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">
                 Logiciel de point de vente multi-boutiques avec gestion des stocks, facturation, analytics et support multi-devises. Solution complète pour le commerce de détail en Afrique.
               </p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 <a
                   href="https://kabrak-store.kabrakeng.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-white
-                    bg-amber-600 hover:bg-amber-500 px-5 py-2.5 rounded-xl transition-all glow-btn group">
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-white
+                    bg-amber-600 hover:bg-amber-500 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl transition-all glow-btn group">
                   Essai Gratuit
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <Link to="/projects"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-300
                     hover:text-white border border-slate-700 hover:border-amber-500/50
-                    px-5 py-2.5 rounded-xl transition-all w-fit group">
+                    px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl transition-all w-fit group">
                   Voir tous les projets
                 </Link>
               </div>
             </div>
 
             {/* Visual placeholder */}
-            <div className="relative h-64 md:h-auto bg-[#050a14] flex items-center justify-center overflow-hidden">
+            <div className="relative h-48 sm:h-64 md:h-auto bg-[#0a0a0a] flex items-center justify-center overflow-hidden">
               <div className="absolute inset-0 grid-bg opacity-60" />
-              <div className="relative z-10 text-center p-8">
-                <div className="w-20 h-20 rounded-2xl mx-auto mb-4 flex items-center justify-center glow-amber"
+              <div className="relative z-10 text-center p-4 sm:p-8">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl mx-auto mb-3 sm:mb-4 flex items-center justify-center glow-amber"
                   style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>
-                  <Briefcase className="w-10 h-10 text-white" />
+                  <Briefcase className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                 </div>
-                <div className="text-white font-bold text-xl font-display">KABRAK Store</div>
-                <div className="text-slate-400 text-sm mt-1">SaaS POS · Gestion Commerciale</div>
-                <div className="mt-4 flex justify-center gap-3 text-xs text-slate-500">
+                <div className="text-white font-bold text-lg sm:text-xl font-display">KABRAK Store</div>
+                <div className="text-slate-400 text-xs sm:text-sm mt-1">SaaS POS · Gestion Commerciale</div>
+                <div className="mt-3 sm:mt-4 flex justify-center gap-2 sm:gap-3 text-[10px] sm:text-xs text-slate-500">
                   <span>🌍 Cameroun</span>
                   <span>·</span>
                   <span>📦 Production</span>
@@ -347,34 +347,34 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="text-center mt-10 reveal">
+        <div className="text-center mt-6 sm:mt-10 reveal">
           <Link to="/projects"
-            className="inline-flex items-center gap-2 text-[#c9a227] hover:text-[#b8952a] text-sm font-medium transition-colors group">
+            className="inline-flex items-center gap-2 text-[#c9a227] hover:text-[#b8952a] text-xs sm:text-sm font-medium transition-colors group">
             {h.featuredAllProjects}
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </section>
 
       {/* ══ TESTIMONIALS ══════════════════════════════════ */}
-      <section className="py-20 bg-[#0a1628]/40 border-y border-slate-800">
-        <div className="max-w-6xl mx-auto px-5">
-          <div className="text-center mb-12 reveal">
-            <span className="text-[#c9a227] text-xs font-semibold uppercase tracking-widest mb-3 block">{h.testimonialsLabel}</span>
-            <h2 className="font-display font-black text-2xl sm:text-4xl text-white">{h.testimonialsTitle}</h2>
+      <section className="py-12 sm:py-20 bg-[#1a1a1a]/40 border-y border-slate-800">
+        <div className="max-w-6xl mx-auto px-4 sm:px-5">
+          <div className="text-center mb-8 sm:mb-12 reveal">
+            <span className="text-[#c9a227] text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">{h.testimonialsLabel}</span>
+            <h2 className="font-display font-black text-xl sm:text-2xl md:text-4xl text-white">{h.testimonialsTitle}</h2>
           </div>
-          <div className="grid gap-6 sm:grid-cols-3">
+          <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-3">
             {h.testimonials.map(({ name, role, quote }) => (
-              <div key={name} className="reveal card-hover p-7 rounded-2xl border border-slate-800 bg-[#050a14]/80">
-                <div className="flex gap-0.5 mb-4">
+              <div key={name} className="reveal card-hover p-5 sm:p-7 rounded-2xl border border-slate-800 bg-[#0a0a0a]/80">
+                <div className="flex gap-0.5 mb-3 sm:mb-4">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
-                <p className="text-slate-300 text-sm leading-relaxed mb-6 italic">"{quote}"</p>
+                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 italic">"{quote}"</p>
                 <div>
-                  <div className="text-white font-semibold text-sm">{name}</div>
-                  <div className="text-slate-500 text-xs mt-0.5">{role}</div>
+                  <div className="text-white font-semibold text-xs sm:text-sm">{name}</div>
+                  <div className="text-slate-500 text-[10px] sm:text-xs mt-0.5">{role}</div>
                 </div>
               </div>
             ))}
@@ -383,26 +383,26 @@ export default function Home() {
       </section>
 
       {/* ══ CTA BANNER ════════════════════════════════════ */}
-      <section className="py-24 max-w-6xl mx-auto px-5">
-        <div className="reveal rounded-2xl p-6 sm:p-12 text-center relative overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #1e1b4b 50%, #0f172a 100%)', border: '1px solid rgba(99,102,241,0.3)' }}>
+      <section className="py-16 sm:py-24 max-w-6xl mx-auto px-4 sm:px-5">
+        <div className="reveal rounded-2xl p-5 sm:p-8 md:p-12 text-center relative overflow-hidden"
+          style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #252525 50%, #1a1a1a 100%)', border: '1px solid rgba(201,162,39,0.3)' }}>
           <div className="absolute inset-0 grid-bg opacity-30" />
           <div className="relative z-10">
-            <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-white mb-4">
+            <h2 className="font-display font-black text-xl sm:text-2xl md:text-4xl text-white mb-3 sm:mb-4">
               {h.ctaTitle}
             </h2>
-            <p className="text-slate-300 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
+            <p className="text-slate-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 sm:mb-8 leading-relaxed">
               {h.ctaSub}
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               <Link to="/contact"
-                className="px-8 py-3.5 rounded-xl bg-white text-slate-900 font-bold text-sm hover:bg-[#c9a227]/10
+                className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl bg-white text-slate-900 font-bold text-xs sm:text-sm hover:bg-[#c9a227]/10
                   flex items-center gap-2 transition-all group">
                 {h.ctaBtn1}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link to="/projects"
-                className="px-8 py-3.5 rounded-xl border border-white/20 text-white font-semibold text-sm
+                className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl border border-white/20 text-white font-semibold text-xs sm:text-sm
                   hover:border-white/40 hover:bg-white/5 transition-all">
                 {h.ctaBtn2}
               </Link>
