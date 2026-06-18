@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle, Star } from 'lucide-react';
+import { ArrowRight, CheckCircle, Star, TrendingUp } from 'lucide-react';
 import { useLang } from '../context/LangContext';
 
 /* ── Custom SVG Icons ────────────────────────────────── */
