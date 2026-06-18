@@ -27,7 +27,7 @@ export default function Navbar() {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 navbar-blur
-      ${scrolled ? 'bg-[#050a14]/90 border-b border-blue-900/30 shadow-lg shadow-black/30' : 'bg-transparent'}`}>
+      ${scrolled ? 'bg-[#0a0a0a]/90 border-b border-slate-800 shadow-lg shadow-black/30' : 'bg-transparent'}`}>
       <div className="max-w-6xl mx-auto px-5 flex items-center justify-between h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center group">
@@ -41,7 +41,7 @@ export default function Navbar() {
               key={to}
               to={to}
               className={`text-sm font-medium transition-colors duration-200
-                ${pathname === to ? 'text-blue-400' : 'text-slate-400 hover:text-white'}`}
+                ${pathname === to ? 'text-[#c9a227]' : 'text-slate-400 hover:text-white'}`}
             >
               {label}
             </Link>
@@ -52,13 +52,13 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
-            className="px-3 py-1.5 rounded-lg border border-slate-700 hover:border-blue-500 text-slate-400 hover:text-white text-xs font-bold transition-all"
+            className="px-3 py-1.5 rounded-lg border border-slate-700 hover:border-[#c9a227] text-slate-400 hover:text-white text-xs font-bold transition-all"
           >
             {lang === 'fr' ? 'EN' : 'FR'}
           </button>
           <Link
             to="/contact"
-            className="px-4 py-2 text-sm font-semibold rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-all glow-btn"
+            className="px-4 py-2 text-sm font-semibold rounded-lg bg-[#c9a227] hover:bg-[#b8952a] text-white transition-all glow-btn"
           >
             {t.nav.cta}
           </Link>
@@ -76,7 +76,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#0a1628]/95 border-b border-blue-900/30 navbar-blur px-5 pb-6 pt-2 space-y-1">
+        <div className="md:hidden bg-[#1a1a1a]/95 border-b border-slate-800 navbar-blur px-5 pb-6 pt-2 space-y-1">
           {links.map(({ to, label }) => (
             <Link
               key={to}

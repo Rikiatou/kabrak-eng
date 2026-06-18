@@ -1,7 +1,35 @@
 import { useEffect, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { Mail, MapPin, Clock, Send, MessageCircle, ArrowRight, CheckCircle } from 'lucide-react';
+import { Send, ArrowRight, CheckCircle } from 'lucide-react';
 import { useLang } from '../context/LangContext';
+
+/* ── Custom SVG Icons ────────────────────────────────── */
+const MailIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+    <polyline points="22,6 12,13 2,6" />
+  </svg>
+);
+
+const MapPinIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+    <circle cx="12" cy="10" r="3" />
+  </svg>
+);
+
+const ClockIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <polyline points="12 6 12 12 16 14" />
+  </svg>
+);
+
+const MessageCircleIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+  </svg>
+);
 
 function useReveal() {
   useEffect(() => {
@@ -59,9 +87,9 @@ export default function Contact() {
       {/* ── Header ─────────────────────────────────────── */}
       <section className="py-20 grid-bg relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.1) 0%, transparent 65%)' }} />
+          style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(201,162,39,0.08) 0%, transparent 65%)' }} />
         <div className="max-w-3xl mx-auto px-5 text-center relative z-10">
-          <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{c.label}</span>
+          <span className="text-[#c9a227] text-xs font-semibold uppercase tracking-widest mb-3 block">{c.label}</span>
           <h1 className="font-display font-black text-3xl sm:text-5xl text-white mb-6">
             <span className="gradient-text">{c.title}</span>
           </h1>
@@ -82,7 +110,9 @@ export default function Contact() {
             <div className="reveal rounded-2xl p-7 border border-green-500/30 bg-green-500/5">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
                 style={{ background: 'rgba(37,211,102,0.15)' }}>
-                <MessageCircle className="w-6 h-6 text-green-400" />
+                <div className="w-6 h-6 text-green-400">
+                  <MessageCircleIcon />
+                </div>
               </div>
               <h3 className="text-white font-bold text-lg mb-2">{c.waTitle}</h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-5">
@@ -107,36 +137,38 @@ export default function Contact() {
             <div className="reveal space-y-4">
               {[
                 {
-                  icon: Mail,
-                  color: '#3b82f6',
+                  icon: MailIcon,
+                  color: '#c9a227',
                   label: 'Email',
                   value: 'contact@kabrakeng.com',
                   href: 'mailto:contact@kabrakeng.com',
                 },
                 {
-                  icon: MapPin,
-                  color: '#8b5cf6',
+                  icon: MapPinIcon,
+                  color: '#8b6914',
                   label: 'Localisation',
                   value: c.location,
                   href: null,
                 },
                 {
-                  icon: Clock,
-                  color: '#06b6d4',
+                  icon: ClockIcon,
+                  color: '#b87333',
                   label: 'Disponibilité',
                   value: c.availability,
                   href: null,
                 },
               ].map(({ icon: Icon, color, label, value, href }) => (
-                <div key={label} className="flex items-center gap-4 p-4 rounded-xl border border-slate-800 bg-[#0a1628]/40">
+                <div key={label} className="flex items-center gap-4 p-4 rounded-xl border border-slate-800 bg-[#1a1a1a]/40">
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
                     style={{ background: `${color}15`, border: `1px solid ${color}30` }}>
-                    <Icon className="w-4 h-4" style={{ color }} />
+                    <div className="w-4 h-4" style={{ color }}>
+                      <Icon />
+                    </div>
                   </div>
                   <div>
                     <div className="text-slate-500 text-xs">{label}</div>
                     {href
-                      ? <a href={href} className="text-white text-sm font-medium hover:text-blue-400 transition-colors">{value}</a>
+                      ? <a href={href} className="text-white text-sm font-medium hover:text-[#c9a227] transition-colors">{value}</a>
                       : <div className="text-white text-sm font-medium">{value}</div>
                     }
                   </div>
@@ -145,12 +177,12 @@ export default function Contact() {
             </div>
 
             {/* What to expect */}
-            <div className="reveal p-6 rounded-2xl border border-slate-800 bg-[#0a1628]/30">
+            <div className="reveal p-6 rounded-2xl border border-slate-800 bg-[#1a1a1a]/30">
               <div className="text-white font-semibold text-sm mb-4">{c.nextTitle}</div>
               <ul className="space-y-3">
                 {c.nextSteps.map((step, i) => (
                   <li key={step} className="flex items-center gap-3 text-sm text-slate-300">
-                    <span className="w-5 h-5 rounded-full bg-blue-600/20 border border-blue-500/30 text-blue-400
+                    <span className="w-5 h-5 rounded-full bg-[#c9a227]/20 border border-[#c9a227]/30 text-[#c9a227]
                       text-xs flex items-center justify-center font-bold shrink-0">
                       {i + 1}
                     </span>
@@ -163,7 +195,7 @@ export default function Contact() {
 
           {/* Right: Form */}
           <div className="md:col-span-3 reveal">
-            <div className="rounded-2xl border border-slate-800 bg-[#0a1628]/60 p-8">
+            <div className="rounded-2xl border border-slate-800 bg-[#1a1a1a]/60 p-8">
               {sent ? (
                 <div className="text-center py-12">
                   <div className="w-16 h-16 rounded-full bg-green-500/15 border border-green-500/30 flex items-center justify-center mx-auto mb-5">
@@ -200,7 +232,7 @@ export default function Contact() {
                         value={form.name}
                         onChange={handleChange}
                         placeholder={c.placeholderName}
-                        className="w-full bg-[#050a14] border border-slate-700 focus:border-blue-500 rounded-xl
+                        className="w-full bg-[#0a0a0a] border border-slate-700 focus:border-[#c9a227] rounded-xl
                           px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors"
                       />
                     </div>
@@ -213,7 +245,7 @@ export default function Contact() {
                         value={form.email}
                         onChange={handleChange}
                         placeholder={c.placeholderEmail}
-                        className="w-full bg-[#050a14] border border-slate-700 focus:border-blue-500 rounded-xl
+                        className="w-full bg-[#0a0a0a] border border-slate-700 focus:border-[#c9a227] rounded-xl
                           px-4 py-3 text-sm text-white placeholder-slate-600 outline-none transition-colors"
                       />
                     </div>
@@ -254,7 +286,7 @@ export default function Contact() {
                       type="submit"
                       disabled={sending}
                       className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl
-                        bg-blue-600 hover:bg-blue-500 disabled:opacity-60 text-white font-bold text-sm
+                        bg-[#c9a227] hover:bg-[#b8952a] disabled:opacity-60 text-white font-bold text-sm
                         transition-all glow-btn"
                     >
                       {sending ? (

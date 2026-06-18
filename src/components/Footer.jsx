@@ -1,6 +1,21 @@
 import { Link } from 'react-router-dom';
-import { Mail, MapPin, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useLang } from '../context/LangContext';
+
+/* ── Custom SVG Icons ────────────────────────────────── */
+const MailIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+    <polyline points="22,6 12,13 2,6" />
+  </svg>
+);
+
+const MapPinIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+    <circle cx="12" cy="10" r="3" />
+  </svg>
+);
 
 
 export default function Footer() {
@@ -9,7 +24,7 @@ export default function Footer() {
   const phone = '237653561862';
   const waMsg = encodeURIComponent(t.whatsapp);
   return (
-    <footer className="bg-[#050a14] border-t border-blue-900/20 pt-16 pb-8">
+    <footer className="bg-[#0a0a0a] border-t border-slate-800 pt-16 pb-8">
       <div className="max-w-6xl mx-auto px-5">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 mb-12">
           {/* Brand */}
@@ -34,7 +49,7 @@ export default function Footer() {
                 { to: '/contact', label: t.nav.contact },
               ].map(({ to, label }) => (
                 <li key={to}>
-                  <Link to={to} className="text-slate-400 hover:text-blue-400 text-sm flex items-center gap-1 group transition-colors">
+                  <Link to={to} className="text-slate-400 hover:text-[#c9a227] text-sm flex items-center gap-1 group transition-colors">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {label}
                   </Link>
@@ -48,12 +63,16 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-sm mb-4">{t.footer.contact}</h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-slate-400 text-sm">
-                <MapPin className="w-4 h-4 text-blue-400 mt-0.5 shrink-0" />
+                <div className="w-4 h-4 text-[#c9a227] mt-0.5 shrink-0">
+                  <MapPinIcon />
+                </div>
                 <span>Cameroun — Afrique Centrale</span>
               </li>
               <li className="flex items-start gap-2 text-slate-400 text-sm">
-                <Mail className="w-4 h-4 text-blue-400 mt-0.5 shrink-0" />
-                <a href="mailto:contact@kabrakeng.com" className="hover:text-blue-400 transition-colors">
+                <div className="w-4 h-4 text-[#c9a227] mt-0.5 shrink-0">
+                  <MailIcon />
+                </div>
+                <a href="mailto:contact@kabrakeng.com" className="hover:text-[#c9a227] transition-colors">
                   contact@kabrakeng.com
                 </a>
               </li>
@@ -69,7 +88,7 @@ export default function Footer() {
             </ul>
             <Link
               to="/contact"
-              className="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600/15 border border-blue-500/30 text-blue-400 text-sm font-medium hover:bg-blue-600/25 transition-all"
+              className="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#c9a227]/15 border border-[#c9a227]/30 text-[#c9a227] text-sm font-medium hover:bg-[#c9a227]/25 transition-all"
             >
               {t.footer.startProject} <ArrowRight className="w-3.5 h-3.5" />
             </Link>
@@ -80,7 +99,7 @@ export default function Footer() {
         <div className="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <span>© {year} KABRAK ENG. {t.footer.rights}</span>
           <span className="flex items-center gap-1">
-            {t.footer.builtIn} <span className="text-blue-400 font-medium">Cameroun</span> 🇨�
+            {t.footer.builtIn} <span className="text-[#c9a227] font-medium">Cameroun</span> 🇨�
           </span>
         </div>
       </div>

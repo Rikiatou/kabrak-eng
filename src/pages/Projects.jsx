@@ -1,7 +1,23 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ExternalLink, CheckCircle, Star, TrendingUp, Briefcase } from 'lucide-react';
+import { ArrowRight, CheckCircle, Star } from 'lucide-react';
 import { useLang } from '../context/LangContext';
+
+/* ── Custom SVG Icons ────────────────────────────────── */
+const ExternalLinkIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    <polyline points="15 3 21 3 21 9" />
+    <line x1="10" y1="14" x2="21" y2="3" />
+  </svg>
+);
+
+const BriefcaseIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+  </svg>
+);
 
 function useReveal() {
   useEffect(() => {
@@ -19,7 +35,7 @@ function ProjectCard({ accentColor, borderColor, badgeText, title, subtitle, des
   return (
     <section className="py-16 max-w-6xl mx-auto px-5">
       <div className={`reveal rounded-2xl border ${borderColor} overflow-hidden`}
-        style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0f1f3d 100%)' }}>
+        style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #252525 100%)' }}>
         <div className="grid md:grid-cols-2 gap-0">
 
           {/* Left — info */}
@@ -47,11 +63,13 @@ function ProjectCard({ accentColor, borderColor, badgeText, title, subtitle, des
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold text-sm transition-all glow-btn"
                 style={{ background: accentColor }}>
                 {visitBtn}
-                <ExternalLink className="w-4 h-4" />
+                <div className="w-4 h-4">
+                  <ExternalLinkIcon />
+                </div>
               </a>
               <Link to="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-600
-                  hover:border-blue-500/60 text-slate-300 hover:text-white font-semibold text-sm transition-all">
+                  hover:border-[#c9a227]/60 text-slate-300 hover:text-white font-semibold text-sm transition-all">
                 {similarBtn}
                 <ArrowRight className="w-4 h-4" />
               </Link>
@@ -106,9 +124,9 @@ export default function Projects() {
       {/* ── Header ─────────────────────────────────────── */}
       <section className="py-20 grid-bg relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.1) 0%, transparent 65%)' }} />
+          style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(201,162,39,0.08) 0%, transparent 65%)' }} />
         <div className="max-w-3xl mx-auto px-5 text-center relative z-10">
-          <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{p.label}</span>
+          <span className="text-[#c9a227] text-xs font-semibold uppercase tracking-widest mb-3 block">{p.label}</span>
           <h1 className="font-display font-black text-3xl sm:text-5xl text-white mb-6">
             {p.title} <span className="gradient-text">{p.titleSpan}</span>
           </h1>
@@ -147,7 +165,9 @@ export default function Projects() {
           <>
             <div className="w-24 h-24 rounded-2xl mx-auto mb-5 flex items-center justify-center float-anim"
               style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>
-              <Briefcase className="w-12 h-12 text-white" />
+              <div className="w-12 h-12 text-white">
+                <BriefcaseIcon />
+              </div>
             </div>
             <div className="text-white font-bold text-2xl font-display mb-1">KABRAK Store</div>
             <div className="text-slate-400 text-sm">kabrak-store.kabrakeng.com</div>
@@ -158,8 +178,8 @@ export default function Projects() {
       {/* ── Kabrak Optic Pro ───────────────────────────── */}
       <div className="border-t border-slate-800/60" />
       <ProjectCard
-        accentColor="#3b82f6"
-        borderColor="border-blue-600/40"
+        accentColor="#c9a227"
+        borderColor="border-[#c9a227]/40"
         badgeText={p.opticBadge}
         title="KABRAK Optic Pro"
         subtitle={p.opticSubtitle}
@@ -175,7 +195,7 @@ export default function Projects() {
             <img
               src="/logo-kabrakopticpro.png"
               alt="Kabrak Optic Pro"
-              className="w-24 h-24 rounded-2xl mx-auto mb-5 object-cover float-anim glow-blue"
+              className="w-24 h-24 rounded-2xl mx-auto mb-5 object-cover float-anim glow-gold"
             />
             <div className="text-white font-bold text-2xl font-display mb-1">Kabrak Optic Pro</div>
             <div className="text-slate-400 text-sm">kabrakopticpro.com</div>
@@ -246,7 +266,7 @@ export default function Projects() {
           <p className="text-slate-400 text-sm max-w-md mx-auto mb-8 leading-relaxed">{p.ctaSub}</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/contact"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#c9a227] hover:bg-[#b8952a]
                 text-white font-bold text-sm transition-all glow-btn group">
               {p.ctaBtn1}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

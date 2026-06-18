@@ -2,10 +2,55 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LangContext';
 import {
-  Code2, Brain, Globe, ArrowRight, CheckCircle,
-  Users, Briefcase, Star, TrendingUp, ChevronRight,
-  Rocket, Shield, Zap
+  ArrowRight, CheckCircle,
+  Users, Briefcase, Star, ChevronRight,
+  Rocket
 } from 'lucide-react';
+
+/* ── Custom SVG Icons ────────────────────────────────── */
+const CodeIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M7 8L3 12L7 16" />
+    <path d="M17 8L21 12L17 16" />
+    <path d="M14 4L10 20" />
+  </svg>
+);
+
+const BrainIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="3" />
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
+    <path d="M12 6v12" />
+    <path d="M6 12h12" />
+  </svg>
+);
+
+const GlobeIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M2 12h20" />
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+  </svg>
+);
+
+const TrendingIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+    <polyline points="17 6 23 6 23 12" />
+  </svg>
+);
+
+const ZapIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+  </svg>
+);
+
+const ShieldIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+  </svg>
+);
 
 /* ── Scroll reveal hook ─────────────────────────────── */
 function useReveal() {
@@ -96,7 +141,7 @@ export default function Home() {
         {/* Radial glow behind text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
           w-[280px] h-[280px] sm:w-[600px] sm:h-[600px] rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(circle, rgba(201,162,39,0.08) 0%, transparent 70%)' }}
         />
 
         <div className="relative z-10 text-center px-5 pt-20 pb-16 max-w-4xl mx-auto">
@@ -117,7 +162,7 @@ export default function Home() {
             style={{ animationDelay: '0.4s' }}>
             <Link
               to="/services"
-              className="group px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm
+              className="group px-7 py-3.5 rounded-xl bg-[#c9a227] hover:bg-[#b8952a] text-white font-semibold text-sm
                 flex items-center gap-2 transition-all glow-btn"
             >
               <Rocket className="w-4 h-4" />
@@ -126,7 +171,7 @@ export default function Home() {
             </Link>
             <Link
               to="/contact"
-              className="px-7 py-3.5 rounded-xl border border-slate-600 hover:border-blue-500/60
+              className="px-7 py-3.5 rounded-xl border border-slate-700 hover:border-[#c9a227]/50
                 text-slate-300 hover:text-white font-semibold text-sm flex items-center gap-2 transition-all"
             >
               {h.heroBtn2}
@@ -138,7 +183,7 @@ export default function Home() {
             style={{ animationDelay: '0.55s' }}>
             {h.trustPills.map((pill) => (
               <span key={t} className="flex items-center gap-1.5">
-                <CheckCircle className="w-3.5 h-3.5 text-blue-400" /> {pill}
+                <CheckCircle className="w-3.5 h-3.5 text-[#c9a227]" /> {pill}
               </span>
             ))}
           </div>
@@ -152,7 +197,7 @@ export default function Home() {
       {/* ══ SERVICES ══════════════════════════════════════ */}
       <section className="py-24 max-w-6xl mx-auto px-5">
         <div className="text-center mb-14 reveal">
-          <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{h.servicesLabel}</span>
+          <span className="text-[#c9a227] text-xs font-semibold uppercase tracking-widest mb-3 block">{h.servicesLabel}</span>
           <h2 className="font-display font-black text-2xl sm:text-4xl text-white mb-4">{h.servicesTitle}</h2>
           <p className="text-slate-400 max-w-xl mx-auto text-sm leading-relaxed">
             {h.servicesSub}
@@ -161,15 +206,17 @@ export default function Home() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           {[
-            { icon: Code2, color: '#3b82f6', ...h.services[0] },
-            { icon: Brain, color: '#8b5cf6', ...h.services[1] },
-            { icon: Globe, color: '#06b6d4', ...h.services[2] },
+            { icon: CodeIcon, color: '#c9a227', ...h.services[0] },
+            { icon: BrainIcon, color: '#8b6914', ...h.services[1] },
+            { icon: GlobeIcon, color: '#b87333', ...h.services[2] },
           ].map(({ icon: Icon, color, title, sub, desc }) => (
             <div key={title}
-              className="card-hover rounded-2xl p-7 border border-slate-800 bg-[#0a1628]/60 group cursor-pointer">
+              className="card-hover rounded-2xl p-7 border border-slate-800 bg-[#1a1a1a]/60 group cursor-pointer">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
                 style={{ background: `${color}18`, border: `1px solid ${color}35` }}>
-                <Icon className="w-6 h-6" style={{ color }} />
+                <div className="w-6 h-6" style={{ color }}>
+                  <Icon />
+                </div>
               </div>
               <div className="text-xs font-medium mb-1" style={{ color }}>{sub}</div>
               <h3 className="text-white font-bold text-lg mb-3">{title}</h3>
@@ -180,7 +227,7 @@ export default function Home() {
 
         <div className="text-center mt-10 reveal">
           <Link to="/services"
-            className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors group">
+            className="inline-flex items-center gap-2 text-[#c9a227] hover:text-[#b8952a] text-sm font-medium transition-colors group">
             {h.servicesLink}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
@@ -188,11 +235,11 @@ export default function Home() {
       </section>
 
       {/* ══ IMPACT STATS ══════════════════════════════════ */}
-      <section className="py-20 border-y border-blue-900/20"
-        style={{ background: 'linear-gradient(135deg, #0a1628 0%, #050a14 50%, #0a1628 100%)' }}>
+      <section className="py-20 border-y border-slate-800"
+        style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%)' }}>
         <div className="max-w-6xl mx-auto px-5">
           <div className="text-center mb-12 reveal">
-            <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{h.impactLabel}</span>
+            <span className="text-[#c9a227] text-xs font-semibold uppercase tracking-widest mb-3 block">{h.impactLabel}</span>
             <h2 className="font-display font-black text-2xl sm:text-4xl text-white mb-4">
               {h.impactTitle1}<br />
               <span className="gradient-text">{h.impactTitle2}</span>
@@ -204,13 +251,15 @@ export default function Home() {
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-14">
             {[
-              { ...h.stats[0], icon: Briefcase, color: '#3b82f6' },
-              { ...h.stats[1], icon: Users, color: '#8b5cf6' },
-              { ...h.stats[2], icon: Rocket, color: '#06b6d4' },
-              { ...h.stats[3], icon: Globe, color: '#10b981' },
+              { ...h.stats[0], icon: Briefcase, color: '#c9a227' },
+              { ...h.stats[1], icon: Users, color: '#8b6914' },
+              { ...h.stats[2], icon: Rocket, color: '#b87333' },
+              { ...h.stats[3], icon: GlobeIcon, color: '#a67c52' },
             ].map(({ num, label, icon: Icon, color }) => (
-              <div key={label} className="reveal text-center p-6 rounded-2xl border border-slate-800 bg-[#0a1628]/40">
-                <Icon className="w-6 h-6 mx-auto mb-3" style={{ color }} />
+              <div key={label} className="reveal text-center p-6 rounded-2xl border border-slate-800 bg-[#1a1a1a]/40">
+                <div className="w-6 h-6 mx-auto mb-3" style={{ color }}>
+                  <Icon />
+                </div>
                 <div className="font-display font-black text-4xl text-white mb-1">{num}</div>
                 <div className="text-slate-400 text-xs">{label}</div>
               </div>
@@ -219,13 +268,15 @@ export default function Home() {
 
           <div className="grid sm:grid-cols-3 gap-5">
             {[
-              { icon: TrendingUp, ...h.pillars[0] },
-              { icon: Zap, ...h.pillars[1] },
-              { icon: Shield, ...h.pillars[2] },
+              { icon: TrendingIcon, ...h.pillars[0] },
+              { icon: ZapIcon, ...h.pillars[1] },
+              { icon: ShieldIcon, ...h.pillars[2] },
             ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="reveal flex gap-4 p-5 rounded-xl border border-slate-800 bg-[#0a1628]/30">
-                <div className="w-10 h-10 rounded-lg bg-blue-600/15 border border-blue-500/25 flex items-center justify-center shrink-0">
-                  <Icon className="w-5 h-5 text-blue-400" />
+              <div key={title} className="reveal flex gap-4 p-5 rounded-xl border border-slate-800 bg-[#1a1a1a]/30">
+                <div className="w-10 h-10 rounded-lg bg-[#c9a227]/15 border border-[#c9a227]/25 flex items-center justify-center shrink-0">
+                  <div className="w-5 h-5 text-[#c9a227]">
+                    <Icon />
+                  </div>
                 </div>
                 <div>
                   <div className="text-white font-semibold text-sm mb-1">{title}</div>
@@ -240,7 +291,7 @@ export default function Home() {
       {/* ══ FEATURED PROJECT ══════════════════════════════ */}
       <section className="py-24 max-w-6xl mx-auto px-5">
         <div className="text-center mb-14 reveal">
-          <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{h.featuredLabel}</span>
+          <span className="text-[#c9a227] text-xs font-semibold uppercase tracking-widest mb-3 block">{h.featuredLabel}</span>
           <h2 className="font-display font-black text-2xl sm:text-4xl text-white mb-4">{h.featuredTitle}</h2>
         </div>
 
@@ -298,7 +349,7 @@ export default function Home() {
 
         <div className="text-center mt-10 reveal">
           <Link to="/projects"
-            className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors group">
+            className="inline-flex items-center gap-2 text-[#c9a227] hover:text-[#b8952a] text-sm font-medium transition-colors group">
             {h.featuredAllProjects}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
@@ -309,7 +360,7 @@ export default function Home() {
       <section className="py-20 bg-[#0a1628]/40 border-y border-slate-800">
         <div className="max-w-6xl mx-auto px-5">
           <div className="text-center mb-12 reveal">
-            <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3 block">{h.testimonialsLabel}</span>
+            <span className="text-[#c9a227] text-xs font-semibold uppercase tracking-widest mb-3 block">{h.testimonialsLabel}</span>
             <h2 className="font-display font-black text-2xl sm:text-4xl text-white">{h.testimonialsTitle}</h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-3">
@@ -345,7 +396,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/contact"
-                className="px-8 py-3.5 rounded-xl bg-white text-slate-900 font-bold text-sm hover:bg-blue-50
+                className="px-8 py-3.5 rounded-xl bg-white text-slate-900 font-bold text-sm hover:bg-[#c9a227]/10
                   flex items-center gap-2 transition-all group">
                 {h.ctaBtn1}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
