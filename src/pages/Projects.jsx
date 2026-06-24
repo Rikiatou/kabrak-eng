@@ -24,11 +24,11 @@ function useReveal() {
   }, []);
 }
 
-/* ── Browser mockup frame ── */
-function BrowserMockup({ url, accentColor, children }) {
+/* ── Browser frame with real screenshot ── */
+function ScreenshotMockup({ url, src, alt, accentColor }) {
   return (
-    <div className="w-full max-w-sm mx-auto rounded-xl overflow-hidden border border-slate-700/50 shadow-2xl"
-      style={{ boxShadow: `0 20px 60px ${accentColor}20` }}>
+    <div className="w-full max-w-md mx-auto rounded-xl overflow-hidden border border-slate-700/50"
+      style={{ boxShadow: `0 20px 60px ${accentColor}25` }}>
       {/* Browser bar */}
       <div className="flex items-center gap-1.5 px-3 py-2 bg-[#1a1a2e] border-b border-slate-700/50">
         <span className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
@@ -36,239 +36,20 @@ function BrowserMockup({ url, accentColor, children }) {
         <span className="w-2.5 h-2.5 rounded-full bg-green-400/70" />
         <div className="flex-1 ml-2 px-2 py-1 rounded bg-[#0d0d1a] text-[10px] text-slate-500 truncate">{url}</div>
       </div>
-      {/* Content */}
-      <div className="bg-[#0d0d1a] p-4 min-h-[200px]">
-        {children}
+      {/* Screenshot */}
+      <div className="bg-[#0d0d1a] overflow-hidden">
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-auto block"
+          loading="lazy"
+        />
       </div>
     </div>
   );
 }
 
-/* ── Mini UI mockups per project type ── */
-function StoreMockup({ accent }) {
-  return (
-    <BrowserMockup url="kabrak-store.kabrakeng.com" accentColor={accent}>
-      <div className="space-y-2">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-lg" style={{ background: accent }} />
-            <span className="text-white text-xs font-bold">KABRAK Store</span>
-          </div>
-          <div className="flex gap-1">
-            <div className="w-6 h-1.5 rounded bg-slate-700" />
-            <div className="w-6 h-1.5 rounded bg-slate-700" />
-          </div>
-        </div>
-        {/* Stats cards */}
-        <div className="grid grid-cols-3 gap-1.5 pt-1">
-          <div className="rounded-lg bg-slate-800/60 p-1.5">
-            <div className="text-[8px] text-slate-500">Ventes</div>
-            <div className="text-[10px] font-bold text-white">1.2M</div>
-          </div>
-          <div className="rounded-lg bg-slate-800/60 p-1.5">
-            <div className="text-[8px] text-slate-500">Stock</div>
-            <div className="text-[10px] font-bold" style={{ color: accent }}>847</div>
-          </div>
-          <div className="rounded-lg bg-slate-800/60 p-1.5">
-            <div className="text-[8px] text-slate-500">Clients</div>
-            <div className="text-[10px] font-bold text-white">312</div>
-          </div>
-        </div>
-        {/* Chart bars */}
-        <div className="flex items-end gap-1 h-12 pt-2">
-          {[40, 65, 50, 80, 60, 90, 70].map((h, i) => (
-            <div key={i} className="flex-1 rounded-t" style={{ height: `${h}%`, background: i === 5 ? accent : '#334155' }} />
-          ))}
-        </div>
-        {/* Table rows */}
-        <div className="space-y-1 pt-1">
-          {[1, 2, 3].map((r) => (
-            <div key={r} className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-slate-700" />
-              <div className="flex-1 h-1.5 rounded bg-slate-700/60" />
-              <div className="text-[8px] font-bold" style={{ color: accent }}>15 000</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </BrowserMockup>
-  );
-}
-
-function OpticMockup({ accent }) {
-  return (
-    <BrowserMockup url="kabrakopticpro.com" accentColor={accent}>
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-lg" style={{ background: accent }} />
-          <span className="text-white text-xs font-bold">Optic Pro</span>
-        </div>
-        {/* Prescription card */}
-        <div className="rounded-lg bg-slate-800/60 p-2">
-          <div className="text-[8px] text-slate-500 mb-1">Ordonnance</div>
-          <div className="grid grid-cols-2 gap-1.5">
-            <div>
-              <div className="text-[7px] text-slate-600">OD</div>
-              <div className="text-[9px] font-bold text-white">-2.25 / +0.75</div>
-            </div>
-            <div>
-              <div className="text-[7px] text-slate-600">OG</div>
-              <div className="text-[9px] font-bold text-white">-2.00 / +0.50</div>
-            </div>
-          </div>
-        </div>
-        {/* Patient list */}
-        <div className="space-y-1">
-          {[1, 2, 3].map((r) => (
-            <div key={r} className="flex items-center gap-2 rounded bg-slate-800/40 p-1.5">
-              <div className="w-5 h-5 rounded-full bg-slate-700" />
-              <div className="flex-1">
-                <div className="h-1.5 w-3/4 rounded bg-slate-600 mb-0.5" />
-                <div className="h-1 w-1/2 rounded bg-slate-700" />
-              </div>
-              <div className="text-[8px]" style={{ color: accent }}>PDF</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </BrowserMockup>
-  );
-}
-
-function ExchangeMockup({ accent }) {
-  return (
-    <BrowserMockup url="exchange.kabrakeng.com" accentColor={accent}>
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-lg" style={{ background: accent }} />
-          <span className="text-white text-xs font-bold">Exchange</span>
-        </div>
-        {/* Rate cards */}
-        <div className="grid grid-cols-2 gap-1.5">
-          <div className="rounded-lg bg-slate-800/60 p-2">
-            <div className="text-[8px] text-slate-500">EUR → XAF</div>
-            <div className="text-[10px] font-bold" style={{ color: accent }}>655.95</div>
-          </div>
-          <div className="rounded-lg bg-slate-800/60 p-2">
-            <div className="text-[8px] text-slate-500">USD → XAF</div>
-            <div className="text-[10px] font-bold" style={{ color: accent }}>608.20</div>
-          </div>
-        </div>
-        {/* Transaction list */}
-        <div className="space-y-1 pt-1">
-          {[
-            { from: 'EUR', amount: '500', to: '327 975' },
-            { from: 'USD', amount: '200', to: '121 640' },
-            { from: 'EUR', amount: '1000', to: '655 950' },
-          ].map((tx, i) => (
-            <div key={i} className="flex items-center justify-between rounded bg-slate-800/40 p-1.5">
-              <div className="flex items-center gap-1.5">
-                <div className="w-4 h-4 rounded-full" style={{ background: `${accent}40` }} />
-                <span className="text-[8px] text-slate-400">{tx.from} {tx.amount}</span>
-              </div>
-              <span className="text-[8px] font-bold text-white">{tx.to} XAF</span>
-            </div>
-          ))}
-        </div>
-        {/* Balance bar */}
-        <div className="rounded-lg bg-slate-800/60 p-2">
-          <div className="flex justify-between text-[8px] text-slate-500 mb-1">
-            <span>Caisse du jour</span>
-            <span style={{ color: accent }}>2 104 565 XAF</span>
-          </div>
-          <div className="h-1.5 rounded-full bg-slate-700 overflow-hidden">
-            <div className="h-full rounded-full" style={{ width: '72%', background: accent }} />
-          </div>
-        </div>
-      </div>
-    </BrowserMockup>
-  );
-}
-
-function BeautyMockup({ accent }) {
-  return (
-    <BrowserMockup url="beautyspa.kabrakeng.com" accentColor={accent}>
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-lg" style={{ background: accent }} />
-          <span className="text-white text-xs font-bold">Beauty & Spa</span>
-        </div>
-        {/* Calendar grid */}
-        <div className="grid grid-cols-4 gap-1">
-          {['Lun', 'Mar', 'Mer', 'Jeu'].map((d, i) => (
-            <div key={d} className="text-center">
-              <div className="text-[7px] text-slate-500 mb-1">{d}</div>
-              <div className="space-y-0.5">
-                <div className="h-2 rounded" style={{ background: i === 2 ? accent : '#334155' }} />
-                <div className="h-2 rounded bg-slate-700" />
-                <div className="h-2 rounded" style={{ background: i === 1 ? `${accent}80` : '#1e293b' }} />
-              </div>
-            </div>
-          ))}
-        </div>
-        {/* Appointment cards */}
-        <div className="space-y-1 pt-1">
-          {[
-            { name: 'Tresse goddess', time: '10:00', price: '15 000' },
-            { name: 'Manucure', time: '14:00', price: '8 000' },
-            { name: 'Massage relaxant', time: '16:30', price: '25 000' },
-          ].map((apt, i) => (
-            <div key={i} className="flex items-center justify-between rounded-lg bg-slate-800/40 p-1.5">
-              <div>
-                <div className="text-[8px] font-bold text-white">{apt.name}</div>
-                <div className="text-[7px] text-slate-500">{apt.time}</div>
-              </div>
-              <div className="text-[8px] font-bold" style={{ color: accent }}>{apt.price}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </BrowserMockup>
-  );
-}
-
-function RetailMockup({ accent }) {
-  return (
-    <BrowserMockup url="kabrak-supermarket-erp" accentColor={accent}>
-      <div className="space-y-2">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-lg" style={{ background: accent }} />
-            <span className="text-white text-xs font-bold">Retail ERP</span>
-          </div>
-          <div className="text-[7px] px-1.5 py-0.5 rounded-full bg-green-500/20 text-green-400">Hors-ligne OK</div>
-        </div>
-        {/* POS interface */}
-        <div className="rounded-lg bg-slate-800/60 p-2">
-          <div className="text-[8px] text-slate-500 mb-1">Caisse en cours</div>
-          <div className="space-y-1">
-            {[
-              { name: 'Riz 5kg', qty: 'x2', price: '12 000' },
-              { name: 'Huile 1L', qty: 'x3', price: '9 000' },
-              { name: 'Sucre 1kg', qty: 'x1', price: '650' },
-            ].map((item, i) => (
-              <div key={i} className="flex items-center justify-between text-[8px]">
-                <span className="text-slate-300">{item.name} <span className="text-slate-600">{item.qty}</span></span>
-                <span className="text-white font-bold">{item.price}</span>
-              </div>
-            ))}
-          </div>
-          <div className="border-t border-slate-700 mt-1.5 pt-1.5 flex justify-between">
-            <span className="text-[8px] text-slate-500">Total</span>
-            <span className="text-[10px] font-bold" style={{ color: accent }}>21 650 FCFA</span>
-          </div>
-        </div>
-        {/* Stock alert */}
-        <div className="flex items-center gap-2 rounded-lg bg-amber-500/10 p-1.5">
-          <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-          <span className="text-[8px] text-amber-300">3 produits sous le seuil</span>
-        </div>
-      </div>
-    </BrowserMockup>
-  );
-}
-
-function ProjectCard({ accentColor, borderColor, badgeText, title, subtitle, desc, features, visitUrl, visitBtn, similarBtn, stats, tags, mockup, reverse }) {
+function ProjectCard({ accentColor, borderColor, badgeText, title, subtitle, desc, features, visitUrl, visitBtn, similarBtn, stats, tags, screenshot, screenshotUrl, reverse }) {
   const infoPanel = (
     <div className="p-5 sm:p-10 flex flex-col justify-center">
       <div className="flex items-center gap-2 mb-6">
@@ -309,10 +90,10 @@ function ProjectCard({ accentColor, borderColor, badgeText, title, subtitle, des
   );
 
   const visualPanel = (
-    <div className="relative min-h-[320px] bg-[#050a14] flex items-center justify-center overflow-hidden">
+    <div className="relative min-h-[360px] bg-[#050a14] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-50" />
       <div className="relative z-10 text-center p-5 sm:p-10 w-full">
-        {mockup}
+        <ScreenshotMockup url={screenshotUrl} src={screenshot} alt={title} accentColor={accentColor} />
         <div className="flex flex-wrap justify-center gap-2 text-xs mt-5">
           {tags.map((tag) => (
             <span key={tag}
@@ -401,7 +182,8 @@ export default function Projects() {
           { num: '4.8/5', label: 'Note clients' },
         ]}
         tags={['SaaS', 'POS', 'Multi-tenant', 'PWA', 'Analytics']}
-        mockup={<StoreMockup accent="#f59e0b" />}
+        screenshot="/screenshots/kabrak-store.png"
+        screenshotUrl="kabrak-store.kabrakeng.com"
       />
 
       {/* ── Kabrak Optic Pro ───────────────────────────── */}
@@ -414,12 +196,13 @@ export default function Projects() {
         subtitle={p.opticSubtitle}
         desc={p.opticDesc}
         features={p.opticFeatures}
-        visitUrl="https://kabrakopticpro.com"
+        visitUrl="https://app.kabrakopticpro.com"
         visitBtn={p.opticVisitBtn}
         similarBtn={p.opticSimilarBtn}
         stats={p.opticStats}
         tags={['SaaS', 'Multi-tenant', 'PDF', 'Analytics', 'IA']}
-        mockup={<OpticMockup accent="#c9a227" />}
+        screenshot="/screenshots/kabrak-optic-pro.png"
+        screenshotUrl="app.kabrakopticpro.com"
         reverse
       />
 
@@ -438,7 +221,8 @@ export default function Projects() {
         similarBtn={p.exchangeSimilarBtn}
         stats={p.exchangeStats}
         tags={['Bureau de change', 'Multi-devises', 'PDF', 'Temps réel']}
-        mockup={<ExchangeMockup accent="#10b981" />}
+        screenshot="/screenshots/kabrak-exchange.png"
+        screenshotUrl="exchange.kabrakeng.com"
       />
 
       {/* ── KABRAK Beauty & Spa Pro ─────────────────────── */}
@@ -456,7 +240,8 @@ export default function Projects() {
         similarBtn={p.beautySimilarBtn}
         stats={p.beautyStats}
         tags={['SaaS', 'PWA', 'Rendez-vous', 'Caisse', 'Multi-thèmes']}
-        mockup={<BeautyMockup accent="#ec4899" />}
+        screenshot="/screenshots/kabrak-beauty.png"
+        screenshotUrl="beautyspa.kabrakeng.com"
         reverse
       />
 
@@ -475,7 +260,8 @@ export default function Projects() {
         similarBtn={p.retailSimilarBtn}
         stats={p.retailStats}
         tags={['ERP', 'POS', 'Hybride', 'Hors-ligne', 'Multi-langue']}
-        mockup={<RetailMockup accent="#3b82f6" />}
+        screenshot="/screenshots/kabrak-retail-erp.png"
+        screenshotUrl="kabrak-supermarket-erp-frontend.vercel.app"
       />
 
       {/* ── CTA ─────────────────────────────────────────── */}
