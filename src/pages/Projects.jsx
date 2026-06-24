@@ -91,9 +91,9 @@ function ProjectCard({ accentColor, borderColor, badgeText, title, subtitle, des
                 ))}
               </div>
               <div className="mt-4 flex justify-center gap-4 text-xs text-slate-500">
-                <span>🌍 Cameroun</span>
+                <span>Cameroun</span>
                 <span>·</span>
-                <span>📦 Production</span>
+                <span>Production</span>
               </div>
             </div>
           </div>
@@ -147,7 +147,7 @@ export default function Projects() {
       <ProjectCard
         accentColor="#f59e0b"
         borderColor="border-amber-600/40"
-        badgeText="🏆 Produit Phare"
+        badgeText="Produit Phare"
         title="KABRAK Store"
         subtitle="SaaS POS & Gestion Commerciale"
         desc="Logiciel de point de vente multi-boutiques avec gestion des stocks, facturation, analytics et support multi-devises. Solution complète pour le commerce de détail en Afrique."
@@ -163,12 +163,12 @@ export default function Projects() {
         tags={['SaaS', 'POS', 'Multi-tenant', 'PWA', 'Analytics']}
         visualContent={
           <>
-            <div className="w-24 h-24 rounded-2xl mx-auto mb-5 flex items-center justify-center float-anim"
-              style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>
-              <div className="w-12 h-12 text-white">
-                <BriefcaseIcon />
-              </div>
-            </div>
+            <img
+              src="/kabrak-store-logo.png"
+              alt="KABRAK Store"
+              className="w-24 h-24 rounded-2xl mx-auto mb-5 object-cover float-anim"
+              style={{ boxShadow: '0 0 30px rgba(245,158,11,0.4)' }}
+            />
             <div className="text-white font-bold text-2xl font-display mb-1">KABRAK Store</div>
             <div className="text-slate-400 text-sm">kabrak-store.kabrakeng.com</div>
           </>
@@ -220,10 +220,12 @@ export default function Projects() {
         tags={['Bureau de change', 'Multi-devises', 'PDF', 'Temps réel']}
         visualContent={
           <>
-            <div className="w-24 h-24 rounded-2xl mx-auto mb-5 flex items-center justify-center float-anim"
-              style={{ background: 'linear-gradient(135deg, #065f46, #10b981)' }}>
-              <TrendingUp className="w-12 h-12 text-white" />
-            </div>
+            <img
+              src="/kabrak-exchange-logo.jpeg"
+              alt="KABRAK Exchange"
+              className="w-24 h-24 rounded-2xl mx-auto mb-5 object-cover float-anim"
+              style={{ boxShadow: '0 0 30px rgba(16,185,129,0.4)' }}
+            />
             <div className="text-white font-bold text-2xl font-display mb-1">KABRAK Exchange</div>
             <div className="text-slate-400 text-sm">exchange.kabrakeng.com</div>
           </>
