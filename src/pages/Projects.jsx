@@ -259,6 +259,35 @@ export default function Projects() {
         }
       />
 
+      {/* ── KABRAK Retail ERP (Supermarché) ─────────────── */}
+      <div className="border-t border-slate-800/60" />
+      <ProjectCard
+        accentColor="#3b82f6"
+        borderColor="border-blue-600/40"
+        badgeText={p.retailBadge}
+        title={p.retailTitle}
+        subtitle={p.retailSubtitle}
+        desc={p.retailDesc}
+        features={p.retailFeatures}
+        visitUrl="https://kabrak-supermarket-erp-frontend.vercel.app/proposition"
+        visitBtn={p.retailVisitBtn}
+        similarBtn={p.retailSimilarBtn}
+        stats={p.retailStats}
+        tags={['ERP', 'POS', 'Hybride', 'Hors-ligne', 'Multi-langue']}
+        visualContent={
+          <>
+            <img
+              src="/kabrak-retail-logo.jpeg"
+              alt="KABRAK Retail ERP"
+              className="w-24 h-24 rounded-2xl mx-auto mb-5 object-cover float-anim"
+              style={{ boxShadow: '0 0 30px rgba(59,130,246,0.4)' }}
+            />
+            <div className="text-white font-bold text-2xl font-display mb-1">KABRAK Retail ERP</div>
+            <div className="text-slate-400 text-sm">Solution Supermarché · Mode Hybride</div>
+          </>
+        }
+      />
+
       {/* ── CTA ─────────────────────────────────────────── */}
       <section className="py-16 border-t border-slate-800">
         <div className="max-w-4xl mx-auto px-5 text-center reveal">
