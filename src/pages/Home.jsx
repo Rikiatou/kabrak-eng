@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LangContext';
 import {
@@ -65,64 +65,18 @@ function useReveal() {
   }, []);
 }
 
-/* ── Hero background canvas (animated particles + grid) */
-function HeroCanvas() {
-  const canvasRef = useRef(null);
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let raf;
-    const dots = Array.from({ length: 70 }, () => ({
-      x: Math.random() * canvas.offsetWidth,
-      y: Math.random() * canvas.offsetHeight,
-      r: Math.random() * 1.8 + 0.4,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      alpha: Math.random() * 0.5 + 0.2,
-    }));
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-    resize();
-    window.addEventListener('resize', resize);
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      dots.forEach((d) => {
-        d.x += d.vx;
-        d.y += d.vy;
-        if (d.x < 0) d.x = canvas.width;
-        if (d.x > canvas.width) d.x = 0;
-        if (d.y < 0) d.y = canvas.height;
-        if (d.y > canvas.height) d.y = 0;
-        ctx.beginPath();
-        ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(201,162,39,${d.alpha})`;
-        ctx.fill();
-      });
-      // draw connecting lines
-      dots.forEach((a, i) => {
-        dots.slice(i + 1).forEach((b) => {
-          const dist = Math.hypot(a.x - b.x, a.y - b.y);
-          if (dist < 110) {
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(201,162,39,${0.12 * (1 - dist / 110)})`;
-            ctx.lineWidth = 0.7;
-            ctx.stroke();
-          }
-        });
-      });
-      raf = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); };
-  }, []);
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />;
+/* ── Hero background: subtle aurora orbs (Stripe/Linear style) */
+function HeroAurora() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="aurora-orb aurora-1"
+        style={{ width: '500px', height: '500px', top: '-10%', left: '15%', background: 'rgba(201,162,39,0.08)' }} />
+      <div className="aurora-orb aurora-2"
+        style={{ width: '400px', height: '400px', top: '30%', right: '10%', background: 'rgba(184,115,51,0.06)' }} />
+      <div className="aurora-orb aurora-3"
+        style={{ width: '350px', height: '350px', bottom: '-5%', left: '40%', background: 'rgba(139,105,20,0.05)' }} />
+    </div>
+  );
 }
 
 /* ─────────────────────────────────────────────────── */
@@ -136,7 +90,7 @@ export default function Home() {
 
       {/* ══ HERO ══════════════════════════════════════════ */}
       <section className="relative min-h-screen flex items-center justify-center grid-bg overflow-hidden">
-        <HeroCanvas />
+        <HeroAurora />
 
         {/* Radial glow behind text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
