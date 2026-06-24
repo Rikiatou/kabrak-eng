@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLang } from '../context/LangContext';
 import {
   ArrowRight, CheckCircle,
-  Users, Briefcase, Star, ChevronRight,
+  Users, Briefcase, ChevronRight,
   Rocket
 } from 'lucide-react';
 
@@ -281,20 +281,17 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Visual placeholder */}
-            <div className="relative h-48 sm:h-64 md:h-auto bg-[#0a0a0a] flex items-center justify-center overflow-hidden">
-              <div className="relative z-10 text-center p-4 sm:p-8">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl mx-auto mb-3 sm:mb-4 flex items-center justify-center glow-amber"
-                  style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>
-                  <Briefcase className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+            {/* Visual — real screenshot in browser frame */}
+            <div className="relative bg-[#0a0a0a] flex items-center justify-center overflow-hidden p-4 sm:p-8">
+              <div className="w-full max-w-sm rounded-xl overflow-hidden border border-slate-700/50"
+                style={{ boxShadow: '0 20px 60px rgba(245,158,11,0.15)' }}>
+                <div className="flex items-center gap-1.5 px-3 py-2 bg-[#1a1a2e] border-b border-slate-700/50">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/70" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-green-400/70" />
+                  <div className="flex-1 ml-2 px-2 py-1 rounded bg-[#0d0d1a] text-[10px] text-slate-500 truncate">kabrak-store.kabrakeng.com</div>
                 </div>
-                <div className="text-white font-bold text-lg sm:text-xl font-display">KABRAK Store</div>
-                <div className="text-slate-400 text-xs sm:text-sm mt-1">SaaS POS · Gestion Commerciale</div>
-                <div className="mt-3 sm:mt-4 flex justify-center gap-2 sm:gap-3 text-[10px] sm:text-xs text-slate-500">
-                  <span>Cameroun</span>
-                  <span>·</span>
-                  <span>Production</span>
-                </div>
+                <img src="/screenshots/kabrak-store.png" alt="KABRAK Store" className="w-full h-auto block" loading="lazy" />
               </div>
             </div>
           </div>
@@ -306,32 +303,6 @@ export default function Home() {
             {h.featuredAllProjects}
             <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
-        </div>
-      </section>
-
-      {/* ══ TESTIMONIALS ══════════════════════════════════ */}
-      <section className="py-12 sm:py-20 bg-[#1a1a1a]/40 border-y border-slate-800">
-        <div className="max-w-6xl mx-auto px-4 sm:px-5">
-          <div className="text-center mb-8 sm:mb-12 reveal">
-            <span className="text-[#c9a227] text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">{h.testimonialsLabel}</span>
-            <h2 className="font-display font-black text-xl sm:text-2xl md:text-4xl text-white">{h.testimonialsTitle}</h2>
-          </div>
-          <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-3">
-            {h.testimonials.map(({ name, role, quote }) => (
-              <div key={name} className="reveal card-hover p-5 sm:p-7 rounded-2xl border border-slate-800 bg-[#0a0a0a]/80">
-                <div className="flex gap-0.5 mb-3 sm:mb-4">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 italic">"{quote}"</p>
-                <div>
-                  <div className="text-white font-semibold text-xs sm:text-sm">{name}</div>
-                  <div className="text-slate-500 text-[10px] sm:text-xs mt-0.5">{role}</div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
