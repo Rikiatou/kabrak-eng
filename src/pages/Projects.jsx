@@ -255,7 +255,7 @@ export default function Projects() {
         subtitle={p.retailSubtitle}
         desc={p.retailDesc}
         features={p.retailFeatures}
-        visitUrl="https://kabrak-supermarket-erp-frontend.vercel.app/proposition"
+        visitUrl="https://kabrak-supermarket-erp-frontend.vercel.app"
         visitBtn={p.retailVisitBtn}
         similarBtn={p.retailSimilarBtn}
         stats={p.retailStats}

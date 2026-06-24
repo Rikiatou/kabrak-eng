@@ -302,7 +302,7 @@ export default function Home() {
             <div className="p-5 sm:p-10 flex flex-col justify-center">
               <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-[10px] sm:text-xs font-medium mb-4 sm:mb-6 w-fit">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-400 pulse-dot" />
-                🏆 Produit Phare
+                Produit Phare
               </div>
               <h3 className="font-display font-black text-2xl sm:text-3xl text-white mb-2 sm:mb-3">KABRAK Store</h3>
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">
@@ -338,9 +338,9 @@ export default function Home() {
                 <div className="text-white font-bold text-lg sm:text-xl font-display">KABRAK Store</div>
                 <div className="text-slate-400 text-xs sm:text-sm mt-1">SaaS POS · Gestion Commerciale</div>
                 <div className="mt-3 sm:mt-4 flex justify-center gap-2 sm:gap-3 text-[10px] sm:text-xs text-slate-500">
-                  <span>🌍 Cameroun</span>
+                  <span>Cameroun</span>
                   <span>·</span>
-                  <span>📦 Production</span>
+                  <span>Production</span>
                 </div>
               </div>
             </div>

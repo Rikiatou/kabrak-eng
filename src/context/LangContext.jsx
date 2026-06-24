@@ -9,7 +9,7 @@ export const translations = {
       projects: 'Projets', contact: 'Contact', cta: 'Nous contacter',
     },
     footer: {
-      tagline: 'Des solutions digitales qui fonctionnent pour l\'Afrique. Conçu et développé au Cameroun.',
+      tagline: 'Des solutions digitales qui fonctionnent pour l\'Afrique. POS, ERP, SaaS — déployés en production.',
       nav: 'Navigation', contact: 'Contact', startProject: 'Démarrer un projet',
       builtIn: 'Conçu au', rights: 'Tous droits réservés.',
     },
@@ -211,7 +211,7 @@ export const translations = {
       projects: 'Projects', contact: 'Contact', cta: 'Contact us',
     },
     footer: {
-      tagline: 'Digital solutions that work for Africa. Designed and built in Cameroon.',
+      tagline: 'Digital solutions that work for Africa. POS, ERP, SaaS — deployed in production.',
       nav: 'Navigation', contact: 'Contact', startProject: 'Start a project',
       builtIn: 'Built in', rights: 'All rights reserved.',
     },

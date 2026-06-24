@@ -98,8 +98,12 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <span>© {year} KABRAK ENG. {t.footer.rights}</span>
-          <span className="flex items-center gap-1">
-            {t.footer.builtIn} <span className="text-[#c9a227] font-medium">Cameroun</span> 🇨�
+          <span className="flex items-center gap-3">
+            <a href="https://wa.me/237653561862" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">WhatsApp</a>
+            <span>·</span>
+            <a href="https://www.facebook.com/KabrakEng" target="_blank" rel="noopener noreferrer" className="hover:text-[#c9a227] transition-colors">Facebook</a>
+            <span>·</span>
+            <a href="https://www.kabrakeng.com" className="hover:text-[#c9a227] transition-colors">kabrakeng.com</a>
           </span>
         </div>
       </div>
