@@ -283,7 +283,6 @@ export default function Home() {
 
             {/* Visual placeholder */}
             <div className="relative h-48 sm:h-64 md:h-auto bg-[#0a0a0a] flex items-center justify-center overflow-hidden">
-              <div className="absolute inset-0 grid-bg opacity-60" />
               <div className="relative z-10 text-center p-4 sm:p-8">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl mx-auto mb-3 sm:mb-4 flex items-center justify-center glow-amber"
                   style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}>
@@ -340,7 +339,6 @@ export default function Home() {
       <section className="py-16 sm:py-24 max-w-6xl mx-auto px-4 sm:px-5">
         <div className="reveal rounded-2xl p-5 sm:p-8 md:p-12 text-center relative overflow-hidden"
           style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #252525 50%, #1a1a1a 100%)', border: '1px solid rgba(201,162,39,0.3)' }}>
-          <div className="absolute inset-0 grid-bg opacity-30" />
           <div className="relative z-10">
             <h2 className="font-display font-black text-xl sm:text-2xl md:text-4xl text-white mb-3 sm:mb-4">
               {h.ctaTitle}

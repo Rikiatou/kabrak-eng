@@ -91,7 +91,6 @@ function ProjectCard({ accentColor, borderColor, badgeText, title, subtitle, des
 
   const visualPanel = (
     <div className="relative min-h-[360px] bg-[#050a14] flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-50" />
       <div className="relative z-10 text-center p-5 sm:p-10 w-full">
         <ScreenshotMockup url={screenshotUrl} src={screenshot} alt={title} accentColor={accentColor} />
         <div className="flex flex-wrap justify-center gap-2 text-xs mt-5">
