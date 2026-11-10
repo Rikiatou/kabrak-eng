@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
 import { useLang } from '../context/LangContext';
+import { getApps } from '../data/apps';
 
 const WA = 'https://wa.me/237653561862';
 
@@ -18,34 +19,6 @@ const copy = {
     try: 'Essayer gratuitement',
     visit: 'Découvrir',
     ask: 'Demander une démo',
-    apps: [
-      {
-        name: 'KABRAK Store', logo: '/kabrak-store-logo.png', href: 'https://kabrak-store.kabrakeng.com', cta: 'try',
-        who: 'Boutiques, vêtements, cosmétiques, pâtisseries, quincailleries',
-        points: ['Caisse et ticket imprimé', 'Stock par taille et couleur', 'Dettes clients et rappel WhatsApp'],
-        price: 'À partir de 4 900 FCFA / mois',
-      },
-      {
-        name: 'KABRAK Optic Pro', logo: '/logo-kabrakopticpro.png', href: 'https://app.kabrakopticpro.com', cta: 'visit',
-        who: 'Opticiens et magasins d’optique',
-        points: ['Patients et ordonnances', 'Ventes et stock de montures', 'Assurances et mutuelles'],
-      },
-      {
-        name: 'KABRAK Beauty & Spa', logo: '/kabrak-beauty-logo.jpg', href: 'https://beautyspa.kabrakeng.com', cta: 'visit',
-        who: 'Salons de beauté, barbershops, instituts',
-        points: ['Rendez-vous', 'Caisse et factures', 'Équipe et commissions'],
-      },
-      {
-        name: 'KABRAK Exchange', logo: '/kabrak-exchange-logo.jpeg', href: 'https://exchange.kabrakeng.com', cta: 'visit',
-        who: 'Bureaux de change',
-        points: ['Opérations de change', 'Caisse et solde du jour', 'Rapports PDF'],
-      },
-      {
-        name: 'KABRAK Retail ERP', logo: '/kabrak-retail-logo.jpeg', href: 'https://kabrak-supermarket-erp-frontend.vercel.app', cta: 'ask',
-        who: 'Supermarchés et grands commerces',
-        points: ['Caisse rapide, plusieurs postes', 'Achats et fournisseurs', 'Comptabilité'],
-      },
-    ],
     customTitle: 'Un besoin précis ?',
     customSub: 'Nous développons aussi des applications sur mesure : site web, application mobile, logiciel de gestion. Expliquez-nous votre activité, nous vous disons ce qui est possible et à quel prix.',
     customBtn: 'Parler de mon projet',
@@ -68,34 +41,6 @@ const copy = {
     try: 'Try for free',
     visit: 'Discover',
     ask: 'Ask for a demo',
-    apps: [
-      {
-        name: 'KABRAK Store', logo: '/kabrak-store-logo.png', href: 'https://kabrak-store.kabrakeng.com', cta: 'try',
-        who: 'Shops, clothing, cosmetics, bakeries, hardware stores',
-        points: ['Register and printed receipt', 'Stock by size and colour', 'Client debts and WhatsApp reminders'],
-        price: 'From 4,900 FCFA / month',
-      },
-      {
-        name: 'KABRAK Optic Pro', logo: '/logo-kabrakopticpro.png', href: 'https://app.kabrakopticpro.com', cta: 'visit',
-        who: 'Opticians and optical stores',
-        points: ['Patients and prescriptions', 'Sales and frame stock', 'Insurance'],
-      },
-      {
-        name: 'KABRAK Beauty & Spa', logo: '/kabrak-beauty-logo.jpg', href: 'https://beautyspa.kabrakeng.com', cta: 'visit',
-        who: 'Beauty salons, barbershops, spas',
-        points: ['Appointments', 'Register and invoices', 'Staff and commissions'],
-      },
-      {
-        name: 'KABRAK Exchange', logo: '/kabrak-exchange-logo.jpeg', href: 'https://exchange.kabrakeng.com', cta: 'visit',
-        who: 'Currency exchange offices',
-        points: ['Exchange operations', 'Daily cash balance', 'PDF reports'],
-      },
-      {
-        name: 'KABRAK Retail ERP', logo: '/kabrak-retail-logo.jpeg', href: 'https://kabrak-supermarket-erp-frontend.vercel.app', cta: 'ask',
-        who: 'Supermarkets and large stores',
-        points: ['Fast multi-till register', 'Purchasing and suppliers', 'Accounting'],
-      },
-    ],
     customTitle: 'A specific need?',
     customSub: 'We also build custom software: websites, mobile apps, management tools. Tell us about your business and we will tell you what is possible and at what price.',
     customBtn: 'Talk about my project',
@@ -110,6 +55,7 @@ const copy = {
 export default function Home() {
   const { lang } = useLang();
   const c = copy[lang] || copy.fr;
+  const apps = getApps(lang);
   const wa = `${WA}?text=${encodeURIComponent(c.waMsg)}`;
 
   return (
@@ -149,7 +95,7 @@ export default function Home() {
           <h2 className="font-display font-bold text-3xl text-slate-900 mb-2">{c.appsTitle}</h2>
           <p className="text-slate-600 mb-10 max-w-2xl">{c.appsSub}</p>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {c.apps.map((a) => (
+            {apps.map((a) => (
               <div key={a.name} className="flex flex-col rounded-xl border border-slate-200 bg-white p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <img src={a.logo} alt="" className="w-11 h-11 rounded-lg object-contain border border-slate-100 bg-white" />
