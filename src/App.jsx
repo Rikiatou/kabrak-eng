@@ -3,6 +3,7 @@ import { LangProvider } from './context/LangContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppFloat from './components/WhatsAppFloat';
+import PageMeta from './components/PageMeta';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -13,6 +14,7 @@ export default function App() {
   return (
     <LangProvider>
       <BrowserRouter>
+        <PageMeta />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
