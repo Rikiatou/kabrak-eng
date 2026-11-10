@@ -25,7 +25,7 @@ const copy = {
     founderLabel: 'Qui est derrière KABRAK',
     founderName: 'Rikiatou Hassan Sale',
     founderRole: 'Fondatrice, ingénieure logiciel',
-    founderText: 'J’ai créé KABRAK Eng pour donner aux commerçants d’Afrique des outils qui marchent vraiment chez eux : sur un téléphone, avec une connexion qui coupe, et payés par Mobile Money. Chaque logiciel est suivi et amélioré à partir des retours de nos clients.',
+    founderText: 'J’ai créé KABRAK Eng pour donner aux entreprises et aux commerçants d’Afrique des outils qui marchent vraiment chez eux : sur un téléphone, avec une connexion qui coupe, et payés par Mobile Money. Chaque logiciel est suivi et amélioré à partir des retours de nos clients.',
     founderLink: 'En savoir plus',
   },
   en: {
@@ -47,7 +47,7 @@ const copy = {
     founderLabel: 'Who is behind KABRAK',
     founderName: 'Rikiatou Hassan Sale',
     founderRole: 'Founder, software engineer',
-    founderText: 'I started KABRAK Eng to give African merchants tools that really work for them: on a phone, with a connection that drops, paid with Mobile Money. Every app is maintained and improved from our clients’ feedback.',
+    founderText: 'I started KABRAK Eng to give African businesses and merchants tools that really work for them: on a phone, with a connection that drops, paid with Mobile Money. Every app is maintained and improved from our clients’ feedback.',
     founderLink: 'Learn more',
   },
 };
