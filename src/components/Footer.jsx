@@ -19,7 +19,7 @@ const MapPinIcon = () => (
 
 
 export default function Footer() {
-  const year = 2025;
+  const year = new Date().getFullYear();
   const { t, lang } = useLang();
   const phone = '237653561862';
   const waMsg = encodeURIComponent(t.whatsapp);

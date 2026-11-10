@@ -24,14 +24,15 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => { setOpen(false); }, [pathname]);
+  const light = pathname === '/';
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 navbar-blur
-      ${scrolled ? 'bg-[#0a0a0a]/90 border-b border-slate-800 shadow-lg shadow-black/30' : 'bg-transparent'}`}>
+      ${light ? 'bg-white/95 border-b border-slate-200' : scrolled ? 'bg-[#0a0a0a]/90 border-b border-slate-800 shadow-lg shadow-black/30' : 'bg-transparent'}`}>
       <div className="max-w-6xl mx-auto px-5 flex items-center justify-between h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center group">
-          <img src="/logo-kabrakeng-trimmed.png" alt="KABRAK ENG" className="h-20 w-auto object-contain group-hover:scale-105 transition-transform" style={{maxWidth:'220px'}} />
+          <img src="/logo-kabrakeng-trimmed.png" alt="KABRAK ENG" className="h-16 w-auto object-contain" style={{maxWidth:'220px'}} />
         </Link>
 
         {/* Desktop links */}
@@ -41,7 +42,7 @@ export default function Navbar() {
               key={to}
               to={to}
               className={`text-sm font-medium transition-colors duration-200
-                ${pathname === to ? 'text-[#c9a227]' : 'text-slate-400 hover:text-white'}`}
+                ${pathname === to ? (light ? 'text-blue-700' : 'text-[#c9a227]') : light ? 'text-slate-600 hover:text-slate-900' : 'text-slate-400 hover:text-white'}`}
             >
               {label}
             </Link>
@@ -52,13 +53,13 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
-            className="px-3 py-1.5 rounded-lg border border-slate-700 hover:border-[#c9a227] text-slate-400 hover:text-white text-xs font-bold transition-all"
+            className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-all ${light ? 'border-slate-300 text-slate-600 hover:text-slate-900' : 'border-slate-700 hover:border-[#c9a227] text-slate-400 hover:text-white'}`}
           >
             {lang === 'fr' ? 'EN' : 'FR'}
           </button>
           <Link
             to="/contact"
-            className="px-4 py-2 text-sm font-semibold rounded-lg bg-[#c9a227] hover:bg-[#b8952a] text-white transition-all glow-btn"
+            className={`px-4 py-2 text-sm font-semibold rounded-lg text-white transition-all ${light ? 'bg-blue-700 hover:bg-blue-800' : 'bg-[#c9a227] hover:bg-[#b8952a] glow-btn'}`}
           >
             {t.nav.cta}
           </Link>
@@ -66,7 +67,7 @@ export default function Navbar() {
 
         {/* Mobile burger */}
         <button
-          className="md:hidden text-slate-300 hover:text-white p-1"
+          className={`md:hidden p-1 ${light ? 'text-slate-700' : 'text-slate-300 hover:text-white'}`}
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >

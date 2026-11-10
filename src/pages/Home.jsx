@@ -1,339 +1,211 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRight, Check } from 'lucide-react';
 import { useLang } from '../context/LangContext';
-import {
-  ArrowRight, CheckCircle,
-  Users, Briefcase, ChevronRight,
-  Rocket
-} from 'lucide-react';
 
-/* ── Custom SVG Icons ────────────────────────────────── */
-const CodeIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M7 8L3 12L7 16" />
-    <path d="M17 8L21 12L17 16" />
-    <path d="M14 4L10 20" />
-  </svg>
-);
+const WA = 'https://wa.me/237653561862';
 
-const BrainIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="3" />
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
-    <path d="M12 6v12" />
-    <path d="M6 12h12" />
-  </svg>
-);
+const copy = {
+  fr: {
+    kicker: 'KABRAK Eng · Cameroun',
+    title: 'Des logiciels simples pour gérer votre commerce.',
+    sub: 'Caisse, stock, factures, rendez-vous. Nos applications sont utilisées chaque jour par des boutiques, des opticiens, des salons de beauté et des bureaux de change. Elles marchent sur téléphone, même sans internet.',
+    seeApps: 'Voir nos logiciels',
+    whatsapp: 'Nous écrire sur WhatsApp',
+    waMsg: 'Bonjour KABRAK Eng, je voudrais des informations.',
+    points: ['Sur téléphone et ordinateur', 'Marche sans internet', 'Orange Money et MTN MoMo', 'Français et anglais'],
+    appsTitle: 'Nos logiciels',
+    appsSub: 'Chaque logiciel est fait pour un métier. Essayez-le gratuitement avant de payer.',
+    try: 'Essayer gratuitement',
+    visit: 'Découvrir',
+    ask: 'Demander une démo',
+    apps: [
+      {
+        name: 'KABRAK Store', logo: '/kabrak-store-logo.png', href: 'https://kabrak-store.kabrakeng.com', cta: 'try',
+        who: 'Boutiques, vêtements, cosmétiques, pâtisseries, quincailleries',
+        points: ['Caisse et ticket imprimé', 'Stock par taille et couleur', 'Dettes clients et rappel WhatsApp'],
+        price: 'À partir de 4 900 FCFA / mois',
+      },
+      {
+        name: 'KABRAK Optic Pro', logo: '/logo-kabrakopticpro.png', href: 'https://app.kabrakopticpro.com', cta: 'visit',
+        who: 'Opticiens et magasins d’optique',
+        points: ['Patients et ordonnances', 'Ventes et stock de montures', 'Assurances et mutuelles'],
+      },
+      {
+        name: 'KABRAK Beauty & Spa', logo: '/kabrak-beauty-logo.jpg', href: 'https://beautyspa.kabrakeng.com', cta: 'visit',
+        who: 'Salons de beauté, barbershops, instituts',
+        points: ['Rendez-vous', 'Caisse et factures', 'Équipe et commissions'],
+      },
+      {
+        name: 'KABRAK Exchange', logo: '/kabrak-exchange-logo.jpeg', href: 'https://exchange.kabrakeng.com', cta: 'visit',
+        who: 'Bureaux de change',
+        points: ['Opérations de change', 'Caisse et solde du jour', 'Rapports PDF'],
+      },
+      {
+        name: 'KABRAK Retail ERP', logo: '/kabrak-retail-logo.jpeg', href: 'https://kabrak-supermarket-erp-frontend.vercel.app', cta: 'ask',
+        who: 'Supermarchés et grands commerces',
+        points: ['Caisse rapide, plusieurs postes', 'Achats et fournisseurs', 'Comptabilité'],
+      },
+    ],
+    customTitle: 'Un besoin précis ?',
+    customSub: 'Nous développons aussi des applications sur mesure : site web, application mobile, logiciel de gestion. Expliquez-nous votre activité, nous vous disons ce qui est possible et à quel prix.',
+    customBtn: 'Parler de mon projet',
+    founderLabel: 'Qui est derrière KABRAK',
+    founderName: 'Rikiatou Hassan Sale',
+    founderRole: 'Fondatrice, ingénieure logiciel',
+    founderText: 'J’ai créé KABRAK Eng pour donner aux commerçants d’Afrique des outils qui marchent vraiment chez eux : sur un téléphone, avec une connexion qui coupe, et payés par Mobile Money. Chaque logiciel est suivi et amélioré à partir des retours de nos clients.',
+    founderLink: 'En savoir plus',
+  },
+  en: {
+    kicker: 'KABRAK Eng · Cameroon',
+    title: 'Simple software to run your business.',
+    sub: 'Point of sale, stock, invoices, appointments. Our apps are used every day by shops, opticians, beauty salons and currency exchange offices. They work on a phone, even without internet.',
+    seeApps: 'See our software',
+    whatsapp: 'Message us on WhatsApp',
+    waMsg: 'Hello KABRAK Eng, I would like some information.',
+    points: ['Phone and computer', 'Works offline', 'Orange Money and MTN MoMo', 'French and English'],
+    appsTitle: 'Our software',
+    appsSub: 'Each app is made for one trade. Try it for free before you pay.',
+    try: 'Try for free',
+    visit: 'Discover',
+    ask: 'Ask for a demo',
+    apps: [
+      {
+        name: 'KABRAK Store', logo: '/kabrak-store-logo.png', href: 'https://kabrak-store.kabrakeng.com', cta: 'try',
+        who: 'Shops, clothing, cosmetics, bakeries, hardware stores',
+        points: ['Register and printed receipt', 'Stock by size and colour', 'Client debts and WhatsApp reminders'],
+        price: 'From 4,900 FCFA / month',
+      },
+      {
+        name: 'KABRAK Optic Pro', logo: '/logo-kabrakopticpro.png', href: 'https://app.kabrakopticpro.com', cta: 'visit',
+        who: 'Opticians and optical stores',
+        points: ['Patients and prescriptions', 'Sales and frame stock', 'Insurance'],
+      },
+      {
+        name: 'KABRAK Beauty & Spa', logo: '/kabrak-beauty-logo.jpg', href: 'https://beautyspa.kabrakeng.com', cta: 'visit',
+        who: 'Beauty salons, barbershops, spas',
+        points: ['Appointments', 'Register and invoices', 'Staff and commissions'],
+      },
+      {
+        name: 'KABRAK Exchange', logo: '/kabrak-exchange-logo.jpeg', href: 'https://exchange.kabrakeng.com', cta: 'visit',
+        who: 'Currency exchange offices',
+        points: ['Exchange operations', 'Daily cash balance', 'PDF reports'],
+      },
+      {
+        name: 'KABRAK Retail ERP', logo: '/kabrak-retail-logo.jpeg', href: 'https://kabrak-supermarket-erp-frontend.vercel.app', cta: 'ask',
+        who: 'Supermarkets and large stores',
+        points: ['Fast multi-till register', 'Purchasing and suppliers', 'Accounting'],
+      },
+    ],
+    customTitle: 'A specific need?',
+    customSub: 'We also build custom software: websites, mobile apps, management tools. Tell us about your business and we will tell you what is possible and at what price.',
+    customBtn: 'Talk about my project',
+    founderLabel: 'Who is behind KABRAK',
+    founderName: 'Rikiatou Hassan Sale',
+    founderRole: 'Founder, software engineer',
+    founderText: 'I started KABRAK Eng to give African merchants tools that really work for them: on a phone, with a connection that drops, paid with Mobile Money. Every app is maintained and improved from our clients’ feedback.',
+    founderLink: 'Learn more',
+  },
+};
 
-const GlobeIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10" />
-    <path d="M2 12h20" />
-    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-  </svg>
-);
-
-const TrendingIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-    <polyline points="17 6 23 6 23 12" />
-  </svg>
-);
-
-const ZapIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-  </svg>
-);
-
-const ShieldIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-  </svg>
-);
-
-/* ── Scroll reveal hook ─────────────────────────────── */
-function useReveal() {
-  useEffect(() => {
-    const els = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.12 }
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-}
-
-/* ── Hero background: subtle aurora orbs (Stripe/Linear style) */
-function HeroAurora() {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div className="aurora-orb aurora-1"
-        style={{ width: '500px', height: '500px', top: '-10%', left: '15%', background: 'rgba(201,162,39,0.08)' }} />
-      <div className="aurora-orb aurora-2"
-        style={{ width: '400px', height: '400px', top: '30%', right: '10%', background: 'rgba(184,115,51,0.06)' }} />
-      <div className="aurora-orb aurora-3"
-        style={{ width: '350px', height: '350px', bottom: '-5%', left: '40%', background: 'rgba(139,105,20,0.05)' }} />
-    </div>
-  );
-}
-
-/* ─────────────────────────────────────────────────── */
 export default function Home() {
-  useReveal();
-  const { t } = useLang();
-  const h = t.home;
+  const { lang } = useLang();
+  const c = copy[lang] || copy.fr;
+  const wa = `${WA}?text=${encodeURIComponent(c.waMsg)}`;
 
   return (
-    <main className="overflow-x-hidden">
-
-      {/* ══ HERO ══════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center justify-center grid-bg overflow-hidden">
-        <HeroAurora />
-
-        {/* Radial glow behind text */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-          w-[280px] h-[280px] sm:w-[600px] sm:h-[600px] rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(201,162,39,0.08) 0%, transparent 70%)' }}
-        />
-
-        <div className="relative z-10 text-center px-4 sm:px-5 pt-16 sm:pt-20 pb-12 sm:pb-16 max-w-4xl mx-auto">
-          {/* Badge */}
-          <h1 className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-tight mb-4 sm:mb-6 fade-in-up"
-            style={{ animationDelay: '0.1s' }}>
-            {h.heroTitle1}<br />
-            <span className="shimmer-text">{h.heroTitle2}</span> {h.heroTitle3}<br />
-            <span className="gradient-text">{h.heroTitle4}</span>
-          </h1>
-
-          <p className="text-slate-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 sm:mb-10 leading-relaxed fade-in-up"
-            style={{ animationDelay: '0.25s' }}>
-            {h.heroSub}
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 fade-in-up"
-            style={{ animationDelay: '0.4s' }}>
-            <Link
-              to="/services"
-              className="group px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-[#c9a227] hover:bg-[#b8952a] text-white font-semibold text-xs sm:text-sm
-                flex items-center gap-2 transition-all glow-btn"
-            >
-              <Rocket className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              {h.heroBtn1}
-              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              to="/contact"
-              className="px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl border border-slate-700 hover:border-[#c9a227]/50
-                text-slate-300 hover:text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all"
-            >
-              {h.heroBtn2}
-            </Link>
-          </div>
-
-          {/* Trust pills */}
-          <div className="mt-8 sm:mt-14 flex flex-wrap justify-center gap-2 sm:gap-4 text-[10px] sm:text-xs text-slate-400 fade-in-up"
-            style={{ animationDelay: '0.55s' }}>
-            {h.trustPills.map((pill) => (
-              <span key={t} className="flex items-center gap-1 sm:gap-1.5">
-                <CheckCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#c9a227]" /> {pill}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
-          style={{ background: 'linear-gradient(to bottom, transparent, #050a14)' }} />
-      </section>
-
-      {/* ══ SERVICES ══════════════════════════════════════ */}
-      <section className="py-16 sm:py-24 max-w-6xl mx-auto px-4 sm:px-5">
-        <div className="text-center mb-10 sm:mb-14 reveal">
-          <span className="text-[#c9a227] text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">{h.servicesLabel}</span>
-          <h2 className="font-display font-black text-xl sm:text-2xl md:text-4xl text-white mb-3 sm:mb-4">{h.servicesTitle}</h2>
-          <p className="text-slate-400 max-w-xl mx-auto text-xs sm:text-sm leading-relaxed">
-            {h.servicesSub}
-          </p>
-        </div>
-
-        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-3">
-          {[
-            { icon: CodeIcon, color: '#c9a227', ...h.services[0] },
-            { icon: BrainIcon, color: '#8b6914', ...h.services[1] },
-            { icon: GlobeIcon, color: '#b87333', ...h.services[2] },
-          ].map(({ icon: Icon, color, title, sub, desc }) => (
-            <div key={title}
-              className="card-hover rounded-2xl p-5 sm:p-7 border border-slate-800 bg-[#1a1a1a]/60 group cursor-pointer">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-3 sm:mb-5"
-                style={{ background: `${color}18`, border: `1px solid ${color}35` }}>
-                <div className="w-5 h-5 sm:w-6 sm:h-6" style={{ color }}>
-                  <Icon />
-                </div>
-              </div>
-              <div className="text-[10px] sm:text-xs font-medium mb-1" style={{ color }}>{sub}</div>
-              <h3 className="text-white font-bold text-base sm:text-lg mb-2 sm:mb-3">{title}</h3>
-              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">{desc}</p>
+    <main className="bg-white text-slate-900">
+      {/* Hero */}
+      <section className="pt-28 sm:pt-32 pb-16 sm:pb-20 border-b border-slate-200">
+        <div className="max-w-6xl mx-auto px-5 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+          <div>
+            <p className="text-sm font-semibold text-blue-700 mb-4">{c.kicker}</p>
+            <h1 className="font-display font-bold text-4xl sm:text-5xl leading-[1.1] tracking-tight text-slate-900 mb-5">
+              {c.title}
+            </h1>
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-8 max-w-xl">{c.sub}</p>
+            <div className="flex flex-col sm:flex-row gap-3 mb-8">
+              <a href="#logiciels" className="inline-flex justify-center items-center gap-2 px-6 py-3 rounded-lg bg-blue-700 hover:bg-blue-800 text-white font-semibold text-sm">
+                {c.seeApps} <ArrowRight className="w-4 h-4" />
+              </a>
+              <a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex justify-center items-center px-6 py-3 rounded-lg border border-slate-300 hover:border-slate-400 text-slate-800 font-semibold text-sm">
+                {c.whatsapp}
+              </a>
             </div>
-          ))}
-        </div>
-
-        <div className="text-center mt-10 reveal">
-          <Link to="/services"
-            className="inline-flex items-center gap-2 text-[#c9a227] hover:text-[#b8952a] text-sm font-medium transition-colors group">
-            {h.servicesLink}
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-slate-600 max-w-md">
+              {c.points.map((p) => (
+                <li key={p} className="flex items-center gap-2"><Check className="w-4 h-4 text-blue-700 shrink-0" />{p}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-xl border border-slate-200 shadow-sm overflow-hidden bg-slate-50">
+            <img src="/screenshots/kabrak-store-dashboard.png" alt="KABRAK Store : tableau de bord" className="w-full h-auto block" />
+          </div>
         </div>
       </section>
 
-      {/* ══ IMPACT STATS ══════════════════════════════════ */}
-      <section className="py-12 sm:py-20 border-y border-slate-800"
-        style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%)' }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-5">
-          <div className="text-center mb-8 sm:mb-12 reveal">
-            <span className="text-[#c9a227] text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">{h.impactLabel}</span>
-            <h2 className="font-display font-black text-xl sm:text-2xl md:text-4xl text-white mb-3 sm:mb-4">
-              {h.impactTitle1}<br />
-              <span className="gradient-text">{h.impactTitle2}</span>
-            </h2>
-            <p className="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto">
-              {h.impactSub}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-14">
-            {[
-              { ...h.stats[0], icon: Briefcase, color: '#c9a227' },
-              { ...h.stats[1], icon: Users, color: '#8b6914' },
-              { ...h.stats[2], icon: Rocket, color: '#b87333' },
-              { ...h.stats[3], icon: GlobeIcon, color: '#a67c52' },
-            ].map(({ num, label, icon: Icon, color }) => (
-              <div key={label} className="reveal text-center p-3 sm:p-6 rounded-2xl border border-slate-800 bg-[#1a1a1a]/40">
-                <div className="w-4 h-4 sm:w-6 sm:h-6 mx-auto mb-2 sm:mb-3" style={{ color }}>
-                  <Icon />
+      {/* Apps */}
+      <section id="logiciels" className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-20">
+        <div className="max-w-6xl mx-auto px-5">
+          <h2 className="font-display font-bold text-3xl text-slate-900 mb-2">{c.appsTitle}</h2>
+          <p className="text-slate-600 mb-10 max-w-2xl">{c.appsSub}</p>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {c.apps.map((a) => (
+              <div key={a.name} className="flex flex-col rounded-xl border border-slate-200 bg-white p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <img src={a.logo} alt="" className="w-11 h-11 rounded-lg object-contain border border-slate-100 bg-white" />
+                  <h3 className="font-display font-bold text-lg text-slate-900">{a.name}</h3>
                 </div>
-                <div className="font-display font-black text-2xl sm:text-4xl text-white mb-1">{num}</div>
-                <div className="text-slate-400 text-[10px] sm:text-xs">{label}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5">
-            {[
-              { icon: TrendingIcon, ...h.pillars[0] },
-              { icon: ZapIcon, ...h.pillars[1] },
-              { icon: ShieldIcon, ...h.pillars[2] },
-            ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="reveal flex gap-3 sm:gap-4 p-3 sm:p-5 rounded-xl border border-slate-800 bg-[#1a1a1a]/30">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[#c9a227]/15 border border-[#c9a227]/25 flex items-center justify-center shrink-0">
-                  <div className="w-4 h-4 sm:w-5 sm:h-5 text-[#c9a227]">
-                    <Icon />
-                  </div>
-                </div>
-                <div>
-                  <div className="text-white font-semibold text-xs sm:text-sm mb-1">{title}</div>
-                  <div className="text-slate-400 text-[10px] sm:text-xs leading-relaxed">{desc}</div>
+                <p className="text-sm text-slate-500 mb-4">{a.who}</p>
+                <ul className="space-y-2 text-sm text-slate-700 mb-5">
+                  {a.points.map((p) => (
+                    <li key={p} className="flex gap-2"><Check className="w-4 h-4 text-blue-700 mt-0.5 shrink-0" />{p}</li>
+                  ))}
+                </ul>
+                <div className="mt-auto">
+                  {a.price && <p className="text-sm font-semibold text-slate-900 mb-3">{a.price}</p>}
+                  {a.cta === 'ask' ? (
+                    <a href={`${WA}?text=${encodeURIComponent(`${c.waMsg} (${a.name})`)}`} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:text-blue-900">
+                      {c.ask} <ArrowRight className="w-4 h-4" />
+                    </a>
+                  ) : (
+                    <a href={a.href} target="_blank" rel="noopener noreferrer"
+                      className={a.cta === 'try'
+                        ? 'inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 text-white text-sm font-semibold'
+                        : 'inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:text-blue-900'}>
+                      {a.cta === 'try' ? c.try : c.visit} <ArrowRight className="w-4 h-4" />
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══ FEATURED PROJECT ══════════════════════════════ */}
-      <section className="py-16 sm:py-24 max-w-6xl mx-auto px-4 sm:px-5">
-        <div className="text-center mb-10 sm:mb-14 reveal">
-          <span className="text-[#c9a227] text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">{h.featuredLabel}</span>
-          <h2 className="font-display font-black text-xl sm:text-2xl md:text-4xl text-white mb-3 sm:mb-4">{h.featuredTitle}</h2>
-        </div>
-
-        <div className="reveal rounded-2xl border border-amber-600/30 overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #252525 100%)' }}>
-          <div className="grid md:grid-cols-2 gap-0">
-            {/* Info */}
-            <div className="p-5 sm:p-10 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-[10px] sm:text-xs font-medium mb-4 sm:mb-6 w-fit">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 pulse-dot" />
-                Produit Phare
-              </div>
-              <h3 className="font-display font-black text-2xl sm:text-3xl text-white mb-2 sm:mb-3">KABRAK Store</h3>
-              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">
-                Logiciel de point de vente multi-boutiques avec gestion des stocks, facturation, analytics et support multi-devises. Solution complète pour le commerce de détail en Afrique.
-              </p>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                <a
-                  href="https://kabrak-store.kabrakeng.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-white
-                    bg-amber-600 hover:bg-amber-500 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl transition-all glow-btn group">
-                  Essai Gratuit
-                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
-                <Link to="/projects"
-                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-300
-                    hover:text-white border border-slate-700 hover:border-amber-500/50
-                    px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl transition-all w-fit group">
-                  Voir tous les projets
-                </Link>
-              </div>
-            </div>
-
-            {/* Visual — real screenshot in browser frame */}
-            <div className="relative bg-[#0a0a0a] flex items-center justify-center overflow-hidden p-4 sm:p-8">
-              <div className="w-full max-w-sm rounded-xl overflow-hidden border border-slate-700/50"
-                style={{ boxShadow: '0 20px 60px rgba(245,158,11,0.15)' }}>
-                <div className="flex items-center gap-1.5 px-3 py-2 bg-[#1a1a2e] border-b border-slate-700/50">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/70" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-400/70" />
-                  <div className="flex-1 ml-2 px-2 py-1 rounded bg-[#0d0d1a] text-[10px] text-slate-500 truncate">kabrak-store.kabrakeng.com</div>
-                </div>
-                <img src="/screenshots/kabrak-store.png" alt="KABRAK Store" className="w-full h-auto block" loading="lazy" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="text-center mt-6 sm:mt-10 reveal">
-          <Link to="/projects"
-            className="inline-flex items-center gap-2 text-[#c9a227] hover:text-[#b8952a] text-xs sm:text-sm font-medium transition-colors group">
-            {h.featuredAllProjects}
-            <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-      </section>
-
-      {/* ══ CTA BANNER ════════════════════════════════════ */}
-      <section className="py-16 sm:py-24 max-w-6xl mx-auto px-4 sm:px-5">
-        <div className="reveal rounded-2xl p-5 sm:p-8 md:p-12 text-center relative overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #252525 50%, #1a1a1a 100%)', border: '1px solid rgba(201,162,39,0.3)' }}>
-          <div className="relative z-10">
-            <h2 className="font-display font-black text-xl sm:text-2xl md:text-4xl text-white mb-3 sm:mb-4">
-              {h.ctaTitle}
-            </h2>
-            <p className="text-slate-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 sm:mb-8 leading-relaxed">
-              {h.ctaSub}
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-              <Link to="/contact"
-                className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl bg-white text-slate-900 font-bold text-xs sm:text-sm hover:bg-[#c9a227]/10
-                  flex items-center gap-2 transition-all group">
-                {h.ctaBtn1}
-                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link to="/projects"
-                className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl border border-white/20 text-white font-semibold text-xs sm:text-sm
-                  hover:border-white/40 hover:bg-white/5 transition-all">
-                {h.ctaBtn2}
+            {/* Custom work */}
+            <div className="flex flex-col rounded-xl bg-slate-900 text-white p-6">
+              <h3 className="font-display font-bold text-lg mb-3">{c.customTitle}</h3>
+              <p className="text-sm text-slate-300 leading-relaxed mb-5">{c.customSub}</p>
+              <Link to="/contact" className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-white hover:text-[#e0c15a]">
+                {c.customBtn} <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Founder */}
+      <section className="py-16 sm:py-20">
+        <div className="max-w-4xl mx-auto px-5 grid sm:grid-cols-[200px_1fr] gap-8 items-center">
+          <img src="/ceo-rikiatou.jpeg" alt={c.founderName} className="w-40 sm:w-full aspect-[4/5] object-cover object-top rounded-xl" />
+          <div>
+            <p className="text-sm font-semibold text-blue-700 mb-3">{c.founderLabel}</p>
+            <p className="text-slate-700 text-lg leading-relaxed mb-5">« {c.founderText} »</p>
+            <p className="font-semibold text-slate-900">{c.founderName}</p>
+            <p className="text-sm text-slate-500 mb-4">{c.founderRole}</p>
+            <Link to="/about" className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:text-blue-900">
+              {c.founderLink} <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
