@@ -1,260 +1,104 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
 import { useLang } from '../context/LangContext';
+import PageHeader from '../components/PageHeader';
+import CtaBand from '../components/CtaBand';
 
-/* ── Custom SVG Icons ────────────────────────────────── */
-const UsersIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-    <circle cx="9" cy="7" r="4" />
-    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-  </svg>
-);
-
-/* ── Custom SVG Icons ────────────────────────────────── */
-const TargetIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10" />
-    <circle cx="12" cy="12" r="6" />
-    <circle cx="12" cy="12" r="2" />
-  </svg>
-);
-
-const EyeIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-    <circle cx="12" cy="12" r="3" />
-  </svg>
-);
-
-const HeartIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-  </svg>
-);
-
-const ZapIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-  </svg>
-);
-
-const GlobeIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10" />
-    <path d="M2 12h20" />
-    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-  </svg>
-);
-
-const CodeIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M7 8L3 12L7 16" />
-    <path d="M17 8L21 12L17 16" />
-    <path d="M14 4L10 20" />
-  </svg>
-);
-
-function useReveal() {
-  useEffect(() => {
-    const els = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.12 }
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-}
+const copy = {
+  fr: {
+    label: 'À propos',
+    title: 'Une entreprise camerounaise de logiciels',
+    sub: 'KABRAK Eng crée des logiciels pour les commerces et les entreprises d’Afrique depuis 2024.',
+    storyTitle: 'Notre histoire',
+    story: [
+      'KABRAK Eng est née d’un constat simple : les logiciels de gestion vendus aux commerçants sont souvent pensés pour l’Europe. Ils demandent un ordinateur, une connexion stable et un paiement par carte.',
+      'Nous faisons l’inverse. Nos logiciels marchent sur un téléphone, continuent quand internet coupe, se paient par Orange Money ou MTN MoMo et parlent français et anglais. Ils sont utilisés par des boutiques, des opticiens, des salons de beauté et des bureaux de change.',
+      'Nous ne vendons pas un logiciel pour disparaître ensuite : nous le suivons et l’améliorons à partir de ce que nos clients nous demandent.',
+    ],
+    howTitle: 'Comment nous travaillons',
+    how: [
+      { title: 'Nous vivons ici', desc: 'Connexion lente, coupures de courant, Mobile Money : nos logiciels sont faits pour ça.' },
+      { title: 'Vous parlez au développeur', desc: 'Pas d’intermédiaire. La personne qui vous répond est celle qui code.' },
+      { title: 'Prix fixe, en FCFA', desc: 'Un devis clair avant de commencer, sans surprise.' },
+      { title: 'Nous restons après la livraison', desc: 'Corrections, mises à jour et nouvelles fonctions selon vos retours.' },
+    ],
+    founderLabel: 'Fondatrice',
+    founderName: 'Rikiatou Hassan Sale',
+    founderRole: 'Fondatrice, ingénieure logiciel et IA',
+    founderBio: 'Diplômée en informatique (computer science) et en génie logiciel, Rikiatou a fondé KABRAK Eng et conçoit elle-même les logiciels de la gamme KABRAK. Elle intègre l’intelligence artificielle dans ses produits : rapports d’activité générés automatiquement, analyse des ventes, assistants et automatisations. Elle travaille directement avec les entreprises et les commerçants, pour que chaque outil réponde à leur quotidien.',
+    ctaTitle: 'Travaillons ensemble',
+    ctaSub: 'Un projet ou une question ? Nous vous répondons.',
+    ctaBtn: 'Nous contacter',
+  },
+  en: {
+    label: 'About',
+    title: 'A Cameroonian software company',
+    sub: 'KABRAK Eng has been building software for African shops and businesses since 2024.',
+    storyTitle: 'Our story',
+    story: [
+      'KABRAK Eng started from a simple observation: management software sold to merchants is often designed for Europe. It needs a computer, a stable connection and a card payment.',
+      'We do the opposite. Our apps work on a phone, keep going when the internet drops, are paid with Orange Money or MTN MoMo, and speak French and English. They are used by shops, opticians, beauty salons and currency exchange offices.',
+      'We do not sell software and disappear: we maintain it and improve it from what our clients ask for.',
+    ],
+    howTitle: 'How we work',
+    how: [
+      { title: 'We live here', desc: 'Slow connections, power cuts, Mobile Money: our apps are built for it.' },
+      { title: 'You talk to the developer', desc: 'No middleman. The person who answers you is the one who codes.' },
+      { title: 'Fixed price, in FCFA', desc: 'A clear quote before we start, no surprises.' },
+      { title: 'We stay after delivery', desc: 'Fixes, updates and new features based on your feedback.' },
+    ],
+    founderLabel: 'Founder',
+    founderName: 'Rikiatou Hassan Sale',
+    founderRole: 'Founder, software and AI engineer',
+    founderBio: 'A graduate in computer science and software engineering, Rikiatou founded KABRAK Eng and designs the KABRAK apps herself. She builds artificial intelligence into her products: automatic business reports, sales analysis, assistants and automation. She works directly with businesses and merchants so that each tool fits their day-to-day work.',
+    ctaTitle: 'Let’s work together',
+    ctaSub: 'A project or a question? We will answer you.',
+    ctaBtn: 'Contact us',
+  },
+};
 
 export default function About() {
-  useReveal();
-  const { t } = useLang();
-  const a = t.about;
+  const { lang } = useLang();
+  const c = copy[lang] || copy.fr;
 
   return (
-    <main className="pt-24 overflow-x-hidden">
+    <main className="bg-white text-slate-900">
+      <PageHeader label={c.label} title={c.title} sub={c.sub} />
 
-      {/* ── Page header ─────────────────────────────────── */}
-      <section className="py-16 sm:py-20 grid-bg relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(201,162,39,0.08) 0%, transparent 65%)' }} />
-        <div className="max-w-3xl mx-auto px-4 sm:px-5 text-center relative z-10">
-          <span className="text-[#c9a227] text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">{a.label}</span>
-          <h1 className="font-display font-black text-2xl sm:text-3xl md:text-5xl text-white mb-4 sm:mb-6">
-            {a.title} <span className="gradient-text">KABRAK Eng</span>
-          </h1>
-          <p className="text-slate-400 text-sm sm:text-base md:text-lg leading-relaxed">
-            {a.sub}
-          </p>
-        </div>
-      </section>
-
-      {/* ── Who we are ──────────────────────────────────── */}
-      <section className="py-16 sm:py-24 max-w-6xl mx-auto px-4 sm:px-5">
-        <div className="grid md:grid-cols-2 gap-8 sm:gap-14 items-center">
-          {/* Visual */}
-          <div className="reveal relative">
-            <div className="rounded-2xl overflow-hidden border border-slate-800 p-4 sm:p-6 md:p-10 text-center"
-              style={{ background: 'linear-gradient(135deg, #1a1a1a, #252525)' }}>
-              <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl mx-auto mb-4 sm:mb-6 flex items-center justify-center float-anim glow-gold"
-                style={{ background: 'linear-gradient(135deg, #8b6914, #c9a227)' }}>
-                <div className="w-10 h-10 sm:w-14 sm:h-14 text-white">
-                  <CodeIcon />
-                </div>
-              </div>
-              <div className="font-display font-black text-xl sm:text-2xl text-white mb-1">KABRAK Engineering</div>
-              <div className="text-[#c9a227] text-xs sm:text-sm mb-3 sm:mb-5">Technology · Innovation · Africa</div>
-              <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-4 sm:mt-6">
-                {[
-                  { num: '+15', label: 'Projets' },
-                  { num: '+20', label: 'Clients' },
-                  { num: '4', label: 'SaaS live' },
-                ].map(({ num, label }) => (
-                  <div key={label} className="p-2 sm:p-3 rounded-xl border border-slate-800 bg-[#0a0a0a]/50">
-                    <div className="font-black text-lg sm:text-2xl text-white font-display">{num}</div>
-                    <div className="text-slate-400 text-[10px] sm:text-xs mt-0.5">{label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            {/* Deco dots */}
-            <div className="absolute -top-4 -right-4 w-16 h-16 sm:w-24 sm:h-24 rounded-full opacity-20 pointer-events-none"
-              style={{ background: 'radial-gradient(circle, #c9a227, transparent)' }} />
-          </div>
-
-          {/* Text */}
-          <div className="reveal">
-            <span className="text-[#c9a227] text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">{a.whoLabel}</span>
-            <h2 className="font-display font-black text-xl sm:text-2xl md:text-4xl text-white mb-4 sm:mb-6">
-              {a.whoTitle1}<br />
-              <span className="gradient-text">{a.whoTitle2}</span>
-            </h2>
-            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">
-              {a.whoP1}
-            </p>
-            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6 sm:mb-8">
-              {a.whoP2}
-            </p>
-            <div className="flex flex-wrap gap-2 sm:gap-3">
-              {a.tags.map((tag) => (
-                <span key={tag} className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-[#c9a227]/12 text-[#c9a227] border border-[#c9a227]/25 text-[10px] sm:text-xs font-medium">
-                  {tag}
-                </span>
-              ))}
-            </div>
+      <section className="py-14 sm:py-20">
+        <div className="max-w-6xl mx-auto px-5 grid lg:grid-cols-[1fr_1.4fr] gap-10">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-slate-900">{c.storyTitle}</h2>
+          <div className="space-y-4 text-slate-700 leading-relaxed">
+            {c.story.map((p) => <p key={p}>{p}</p>)}
           </div>
         </div>
       </section>
 
-      {/* ── Mission / Vision / Values ────────────────────── */}
-      <section className="py-12 sm:py-20 border-y border-slate-800 bg-[#1a1a1a]/30">
-        <div className="max-w-6xl mx-auto px-4 sm:px-5">
-          <div className="text-center mb-8 sm:mb-14 reveal">
-            <h2 className="font-display font-black text-xl sm:text-2xl md:text-4xl text-white">{a.guideTitle}</h2>
-          </div>
-          <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-3">
-            {[
-              { icon: TargetIcon, color: '#c9a227', ...a.mission },
-              { icon: EyeIcon, color: '#8b6914', ...a.vision },
-              { icon: HeartIcon, color: '#b87333', ...a.values },
-            ].map(({ icon: Icon, color, title, desc }) => (
-              <div key={title} className="reveal card-hover p-5 sm:p-8 rounded-2xl border border-slate-800 bg-[#0a0a0a]/70 text-center">
-                <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl mx-auto flex items-center justify-center mb-3 sm:mb-5"
-                  style={{ background: `${color}15`, border: `1px solid ${color}30` }}>
-                  <div className="w-5 h-5 sm:w-7 sm:h-7" style={{ color }}>
-                    <Icon />
-                  </div>
-                </div>
-                <h3 className="text-white font-bold text-base sm:text-lg mb-2 sm:mb-3">{title}</h3>
-                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">{desc}</p>
+      <section className="py-14 sm:py-20 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-6xl mx-auto px-5">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-slate-900 mb-10">{c.howTitle}</h2>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {c.how.map((h) => (
+              <div key={h.title} className="border-t-2 border-blue-700 pt-4">
+                <h3 className="font-semibold text-slate-900 mb-1">{h.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{h.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Why choose us ────────────────────────────────── */}
-      <section className="py-16 sm:py-24 max-w-6xl mx-auto px-4 sm:px-5">
-        <div className="text-center mb-8 sm:mb-14 reveal">
-          <span className="text-[#c9a227] text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">{a.whyLabel}</span>
-          <h2 className="font-display font-black text-xl sm:text-2xl md:text-4xl text-white">
-            {a.whyTitle}
-          </h2>
-        </div>
-        <div className="grid gap-3 sm:gap-5 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { icon: ZapIcon, color: '#c9a227', ...a.why[0] },
-            { icon: GlobeIcon, color: '#8b6914', ...a.why[1] },
-            { icon: CodeIcon, color: '#b87333', ...a.why[2] },
-            { icon: UsersIcon, color: '#a67c52', ...a.why[3] },
-          ].map(({ icon: Icon, color, title, desc }) => (
-            <div key={title} className="reveal card-hover p-4 sm:p-6 rounded-2xl border border-slate-800 bg-[#1a1a1a]/50">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-3 sm:mb-4"
-                style={{ background: `${color}15`, border: `1px solid ${color}30` }}>
-                <div className="w-4 h-4 sm:w-5 sm:h-5" style={{ color }}>
-                  <Icon />
-                </div>
-              </div>
-              <h3 className="text-white font-semibold text-xs sm:text-sm mb-2">{title}</h3>
-              <p className="text-slate-400 text-xs leading-relaxed">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── CEO ─────────────────────────────────────────── */}
-      <section className="py-12 sm:py-20 border-y border-slate-800 bg-[#1a1a1a]/30">
-        <div className="max-w-5xl mx-auto px-4 sm:px-5">
-          <div className="text-center mb-8 sm:mb-12 reveal">
-            <span className="text-[#c9a227] text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">Leadership</span>
-            <h2 className="font-display font-black text-xl sm:text-2xl md:text-4xl text-white">À la tête de <span className="gradient-text">KABRAK ENG</span></h2>
-          </div>
-          <div className="reveal flex flex-col md:flex-row items-center gap-6 sm:gap-10">
-            {/* Photo */}
-            <div className="flex-shrink-0">
-              <div className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden border-2 border-[#c9a227]/30 shadow-xl shadow-black/30">
-                <img src="/ceo-rikiatou.jpeg" alt="Rikiatou Hassan Sale" className="w-full h-full object-cover object-top" />
-              </div>
-            </div>
-            {/* Text */}
-            <div className="text-center md:text-left">
-              <div className="inline-flex items-center gap-2 px-2 sm:px-3 py-1 rounded-full bg-[#c9a227]/15 border border-[#c9a227]/30 text-[#c9a227] text-[10px] sm:text-xs font-semibold mb-3 sm:mb-4">
-                Fondatrice &amp; CEO
-              </div>
-              <h3 className="font-display font-black text-xl sm:text-2xl md:text-3xl text-white mb-1">RIKIATOU HASSAN SALE</h3>
-              <p className="text-yellow-400 text-xs sm:text-sm font-medium mb-3 sm:mb-5">Épouse Kabir</p>
-              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 max-w-lg">
-                Ingénieure en développement logiciel, Rikiatou est la force créatrice derrière KABRAK ENG.
-                Avec une vision claire et une expertise technique pointue, elle conçoit des solutions digitales
-                qui propulsent les entreprises africaines vers l&apos;excellence.
-              </p>
-              <blockquote className="border-l-4 border-[#c9a227] pl-3 sm:pl-4 italic text-white font-semibold text-xs sm:text-sm md:text-base">
-                &ldquo;Innovation · Performance · Excellence&rdquo;
-              </blockquote>
-            </div>
+      <section className="py-14 sm:py-20">
+        <div className="max-w-4xl mx-auto px-5 grid sm:grid-cols-[220px_1fr] gap-8 items-center">
+          <img src="/ceo-rikiatou.jpeg" alt={c.founderName} className="w-44 sm:w-full aspect-[4/5] object-cover object-top rounded-xl" />
+          <div>
+            <p className="text-sm font-semibold text-blue-700 mb-2">{c.founderLabel}</p>
+            <h2 className="font-display font-bold text-2xl text-slate-900">{c.founderName}</h2>
+            <p className="text-sm text-slate-500 mb-4">{c.founderRole}</p>
+            <p className="text-slate-700 leading-relaxed">{c.founderBio}</p>
           </div>
         </div>
       </section>
 
-      {/* ── CTA ─────────────────────────────────────────── */}
-      <section className="py-12 sm:py-16 max-w-4xl mx-auto px-4 sm:px-5 text-center reveal">
-        <h2 className="font-display font-black text-xl sm:text-2xl md:text-3xl text-white mb-3 sm:mb-4">
-          {a.ctaTitle}
-        </h2>
-        <p className="text-slate-400 text-xs sm:text-sm mb-6 sm:mb-8 max-w-md mx-auto leading-relaxed">
-          {a.ctaSub}
-        </p>
-        <Link to="/contact"
-          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#c9a227] hover:bg-[#b8952a]
-            text-white font-bold text-sm transition-all glow-btn group">
-          {a.ctaBtn}
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </Link>
-      </section>
-
+      <CtaBand title={c.ctaTitle} sub={c.ctaSub} btn={c.ctaBtn} />
     </main>
   );
 }

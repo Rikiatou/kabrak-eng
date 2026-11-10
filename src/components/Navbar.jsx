@@ -27,11 +27,11 @@ export default function Navbar() {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 navbar-blur
-      ${scrolled ? 'bg-[#0a0a0a]/90 border-b border-slate-800 shadow-lg shadow-black/30' : 'bg-transparent'}`}>
+      bg-white/95 border-b border-slate-200 ${scrolled ? 'shadow-sm' : ''}`}>
       <div className="max-w-6xl mx-auto px-5 flex items-center justify-between h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center group">
-          <img src="/logo-kabrakeng-trimmed.png" alt="KABRAK ENG" className="h-20 w-auto object-contain group-hover:scale-105 transition-transform" style={{maxWidth:'220px'}} />
+          <img src="/logo-kabrakeng-trimmed.png" alt="KABRAK ENG" className="h-16 w-auto object-contain" style={{maxWidth:'220px'}} />
         </Link>
 
         {/* Desktop links */}
@@ -41,7 +41,7 @@ export default function Navbar() {
               key={to}
               to={to}
               className={`text-sm font-medium transition-colors duration-200
-                ${pathname === to ? 'text-[#c9a227]' : 'text-slate-400 hover:text-white'}`}
+                ${pathname === to ? 'text-blue-700' : 'text-slate-600 hover:text-slate-900'}`}
             >
               {label}
             </Link>
@@ -52,13 +52,13 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
-            className="px-3 py-1.5 rounded-lg border border-slate-700 hover:border-[#c9a227] text-slate-400 hover:text-white text-xs font-bold transition-all"
+            className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-all border-slate-300 text-slate-600 hover:text-slate-900`}
           >
             {lang === 'fr' ? 'EN' : 'FR'}
           </button>
           <Link
             to="/contact"
-            className="px-4 py-2 text-sm font-semibold rounded-lg bg-[#c9a227] hover:bg-[#b8952a] text-white transition-all glow-btn"
+            className={`px-4 py-2 text-sm font-semibold rounded-lg text-white transition-all bg-blue-700 hover:bg-blue-800`}
           >
             {t.nav.cta}
           </Link>
@@ -66,7 +66,7 @@ export default function Navbar() {
 
         {/* Mobile burger */}
         <button
-          className="md:hidden text-slate-300 hover:text-white p-1"
+          className="md:hidden p-1 text-slate-700"
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >
@@ -76,13 +76,13 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#1a1a1a]/95 border-b border-slate-800 navbar-blur px-5 pb-6 pt-2 space-y-1">
+        <div className="md:hidden bg-white border-b border-slate-200 px-5 pb-6 pt-2 space-y-1">
           {links.map(({ to, label }) => (
             <Link
               key={to}
               to={to}
-              className={`block py-3 text-sm font-medium border-b border-slate-800
-                ${pathname === to ? 'text-blue-400' : 'text-slate-300 hover:text-white'}`}
+              className={`block py-3 text-sm font-medium border-b border-slate-100
+                ${pathname === to ? 'text-blue-700' : 'text-slate-700 hover:text-slate-900'}`}
             >
               {label}
             </Link>
@@ -90,13 +90,13 @@ export default function Navbar() {
           <div className="flex gap-3 mt-4">
             <button
               onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
-              className="flex-1 py-3 rounded-lg border border-slate-700 text-slate-300 text-sm font-bold"
+              className="flex-1 py-3 rounded-lg border border-slate-300 text-slate-700 text-sm font-semibold"
             >
-              {lang === 'fr' ? '🇬🇧 English' : '🇫🇷 Français'}
+              {lang === 'fr' ? 'English' : 'Français'}
             </button>
             <Link
               to="/contact"
-              className="flex-1 text-center py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all"
+              className="flex-1 text-center py-3 rounded-lg bg-blue-700 hover:bg-blue-800 text-white font-semibold text-sm transition-all"
             >
               {t.nav.cta}
             </Link>
